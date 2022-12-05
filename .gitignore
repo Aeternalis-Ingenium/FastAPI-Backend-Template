@@ -1,0 +1,143 @@
+# Byte-compiled, optimized, and DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C/C++ production directory
+/build
+*/build
+*.so
+
+# Cache
+.cache
+.pytest_cache/
+.webassets-cache
+.mypy_cache/
+
+# Celery (Üython's asynchronous task queues framework)
+celerybeat-schedule
+
+# Code editor (IntelliJ & VSCode)
+*.iml
+*.ipr
+*.iws
+.idea/
+.classpath
+.project
+.settings/
+.vscode/
+
+# Container
+.dockerignore
+
+# Database-related
+*.sqlite3
+*.db
+postgres-data
+
+# Distributions package
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Documentation
+/site
+docs/_build/
+
+# Dotenvs
+/.pnp
+.pnp.js
+.env
+env/
+ENV/
+env.bak/
+prod_env/
+dev_env/
+test_env/
+test.env
+dev.env
+prod.env
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Flutter
+*.class
+*.lock
+*.log
+*.pyc
+*.swp
+.atom/
+.buildlog/
+.history
+.svn/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Log files
+pip-log.txt
+pip-delete-this-directory.txt
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Project settings
+local_settings.py
+instance/
+.spyderproject
+.spyproject
+.ropeproject
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Rust compiled file
+target/
+
+# SageMath (Python#s open-source mathematics framework)
+*.sage.py
+
+# Scraping tool
+.scrapy
+
+# Translations:
+*.mo
+*.pot
+
+# Unit test and coverage reports:
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+coverage/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Virtual Environment & packages
+.python-version
+.venv
+venv/
+venv.bak/
+*/node_modules/
+node_modules/
