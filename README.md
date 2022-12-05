@@ -15,8 +15,10 @@ Well, the easy anser is Speed! And by speed I mean "the Flash type of speed"!
 
 * **FastAPI** is crowned as the fastest web framework for Python and thus we use it for our backend development.
 * Meanwhile, **Qwik** is a young web framework written in Java Script that offers the fastest possile page load times regardless the complexity of our website! Check them both in the above link.
-* The database of my choice is the **asynchronous** version of **PostgreSQL** (via [SQLAlchemy 2.0](https://docs.sqlalchemy.org/en/20/orm/extensions/asyncio.html)). Why asynchronous? Well.. Speed! Read [this block from Packt](https://subscription.packtpub.com/book/programming/9781838821135/6/ch06lvl1sec32/synchronous-asynchronous-and-threaded-execution) if you want to educate yourself further about the topic **Asynchronous, Synchronous, Concurrency,** and **Parallelism**.
+* The database of my choice is the **asynchronous** version of **PostgreSQL** (via [SQLAlchemy 2.0](https://docs.sqlalchemy.org/en/20/orm/extensions/asyncio.html)). Why asynchronous? Well.. Speed! Read [this blog from Packt](https://subscription.packtpub.com/book/programming/9781838821135/6/ch06lvl1sec32/synchronous-asynchronous-and-threaded-execution) if you want to educate yourself further about the topic **Asynchronous, Synchronous, Concurrency,** and **Parallelism**.
 * And **Docker** is the technology that will hold your team together because your app will live in a container where the gravity of your personal machine specs don't matter anymore!
+
+The main template in this repository is the `backend/` and `frontend/` directories.
 
 ## Other Technology
 
@@ -43,3 +45,15 @@ The above listed technologies are just the main ones. There are other technologi
 * [CODEOWNER](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners) $\rightarrow$ A file for distributing the responsibilities in our project to each team/team mate.
 
 The choice for my project development worklow is usually the [Trund-Based Development](https://trunkbaseddevelopment.com/), hence the name `trunk` for the main branch repositury instead of `master` or `main`.
+
+## Walk-Through
+
+To read the walk-through, please refer to the following folders in `./Template-Guide`:
+
+* [Step 1](https://github.com/Aeternalis-Ingenium/DAPSQL-FAQ-Stack-Template/Template-Guide/Step1/README.md) $\rightarrow$ `Python` setup, `.gitignore`, `.dockerignore`, `dotev`, `README`.
+
+## Using this Template
+
+To use this template click "use this template" and choose "crete new repository", just like the image below. After you have your own repository, you can change the `README` file and delete the `Template-Guide` directory.
+
+![Template-Utilization](Template-Guide/Assets/Template-Utilization.jpg)
