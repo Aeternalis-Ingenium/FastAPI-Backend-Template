@@ -1,5 +1,8 @@
 alembic
+asgi_lifespan
+argon2_cffi
 asyncpg
+bcrypt
 black
 colorama
 email-validator
@@ -9,6 +12,7 @@ httpx
 isort
 loguru
 mypy
+passlib
 pathlib
 pre-commit
 python-dotenv
@@ -19,5 +23,6 @@ pytest
 pytest-asyncio
 pytest-cov
 pytest-xdist
-sqlalchemy
+SQLAlchemy==2.0.0b3
+trio
 uvicorn

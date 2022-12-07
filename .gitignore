@@ -27,9 +27,6 @@ celerybeat-schedule
 .settings/
 .vscode/
 
-# Container
-.dockerignore
-
 # Database-related
 *.sqlite3
 *.db
@@ -61,7 +58,7 @@ docs/_build/
 # Dotenvs
 /.pnp
 .pnp.js
-.env
+#.env
 env/
 ENV/
 env.bak/
@@ -123,14 +120,17 @@ target/
 *.mo
 *.pot
 
-# Unit test and coverage reports:
+# Tests and coverage reports:
 htmlcov/
 .tox/
 .coverage
 .coverage.*
-coverage/
+#coverage/
 nosetests.xml
+cpverage.html
 coverage.xml
+cov.xml
+cov.html
 *.cover
 .hypothesis/
 

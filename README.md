@@ -1,15 +1,13 @@
 <h1 align=center><strong>DAPSQL FAQ-Stack Project Template</strong></h1>
 
-This is a template repository aimed to kick start your project in the most comprehensive way! The documentation in this `README` assumed that you are a beginner who are eager to learn by doing and mistakes, thus you need to read the technologies mentioned below on your own since this repository will only walk your through the code for the setup.
-
-Now, let's disect the weird abbreviation from this repository title **DAQSQL FAQ** which stands for:
+This is a template repository aimed to kick start your project in the most comprehensive way! Now, let's disect the weird abbreviation from this repository title **DAQSQL FAQ** which stands for:
 
 * [Dockerized](https://www.docker.com/)
 * [Asynchronous PostgreSQL](https://www.postgresql.org/docs/current/libpq-async.html)
 * [FastAPI](https://fastapi.tiangolo.com/)
 * [Qwik](https://qwik.builder.io/)
 
-## What is with this weird Stack?
+## Why FAQ-Stack?
 
 Well, the easy anser is Speed! And by speed I mean "the Flash type of speed"!
 
@@ -18,9 +16,7 @@ Well, the easy anser is Speed! And by speed I mean "the Flash type of speed"!
 * The database of my choice is the **asynchronous** version of **PostgreSQL** (via [SQLAlchemy 2.0](https://docs.sqlalchemy.org/en/20/orm/extensions/asyncio.html)). Why asynchronous? Well.. Speed! Read [this blog from Packt](https://subscription.packtpub.com/book/programming/9781838821135/6/ch06lvl1sec32/synchronous-asynchronous-and-threaded-execution) if you want to educate yourself further about the topic **Asynchronous, Synchronous, Concurrency,** and **Parallelism**.
 * And **Docker** is the technology that will hold your team together because your app will live in a container where the gravity of your personal machine specs don't matter anymore!
 
-The main template in this repository is the `backend/` and `frontend/` directories.
-
-## Other Technology
+## Other Technologies
 
 The above listed technologies are just the main ones. There are other technologies utilized in this project template to ensure that your application is robust and provides the best-possible development environment for your team! These technologies are:
 
@@ -42,18 +38,21 @@ The above listed technologies are just the main ones. There are other technologi
 * [DBDiagram](https://dbdiagram.io/home) $\rightarrow$ A platform that lets your design your database by writing SQL and converting it into ERD. This paltform provides a complete symbol for entity relationships (not like many other platforms!).
 * [GitHub Actions](https://github.com/features/actions) $\rightarrow$ The platform to setup our CI/CD by GitHub.
 * [SQLAlchemy 2.0](https://docs.sqlalchemy.org/en/20/orm/extensions/asyncio.html) $\rightarrow$ The go-to database interface library for Python. The 2.0 is the most recent update where it provides asynchronous setup.
-* [CODEOWNER](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners) $\rightarrow$ A file for distributing the responsibilities in our project to each team/team mate.
+* [CODEOWNERS](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners) $\rightarrow$ A file for distributing the responsibilities in our project to each team/team mate.
 
-The choice for my project development worklow is usually the [Trund-Based Development](https://trunkbaseddevelopment.com/), hence the name `trunk` for the main branch repositury instead of `master` or `main`.
-
-## Walk-Through
-
-To read the walk-through, please refer to the following folders in `./Template-Guide`:
-
-* [Step 1](https://github.com/Aeternalis-Ingenium/DAPSQL-FAQ-Stack-Template/Template-Guide/Step1/README.md) $\rightarrow$ `Python` setup, `.gitignore`, `.dockerignore`, `dotev`, `README`.
+The choice for my project development worklow is usually the [Trund-Based Development](https://trunkbaseddevelopment.com/), hence the name `trunk` for the main branch repository instead of `master` or `main`.
 
 ## Using this Template
 
-To use this template click "use this template" and choose "crete new repository", just like the image below. After you have your own repository, you can change the `README` file and delete the `Template-Guide` directory.
+To use this template click "use this template" in the repository header and choose "create new repository". Done! You welcome!
 
-![Template-Utilization](Template-Guide/Assets/Template-Utilization.jpg)
+## Installation
+
+After having your own repository with this project template, please go through all the steps to install all the requirements with the following order:
+
+* [Part I: Backend App](https://github.com/Aeternalis-Ingenium/DAPSQL-FAQ-Stack-Template/trunk/backend)
+* [Part II: Frontend App](https://github.com/Aeternalis-Ingenium/DAPSQL-FAQ-Stack-Template/trunk/frontend)
+* [Part III: Containerization](https://github.com/Aeternalis-Ingenium/DAPSQL-FAQ-Stack-Template/trunk/CONTAINER.md)
+* [Part IV: CI/CD](https://github.com/Aeternalis-Ingenium/DAPSQL-FAQ-Stack-Template/trunk/.github)
+
+---

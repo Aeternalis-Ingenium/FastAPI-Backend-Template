@@ -1,0 +1,26 @@
+# Python related code
+*.py @Aeternalis-Ingenium
+
+# Java Script related code
+*.tsx @Aeternalis-Ingenium
+*.ts @Aeternalis-Ingenium
+*.cjs @Aeternalis-Ingenium
+
+# HTML & CSS realted code
+*.html @Aeternalis-Ingenium
+*.css @Aeternalis-Ingenium
+*.scss @Aeternalis-Ingenium
+
+# JSON related code
+*.json
+
+# DevOps related code
+*.yml @Aeternalis-Ingenium
+*.yaml @Aeternalis-Ingenium
+
+# Terraform
+*.tf @Aeternalis-Ingenium
+
+# Docker related code
+Dockerfile @Aeternalis-Ingenium
+*.prod @Aeternalis-Ingenium
