@@ -1,6 +1,7 @@
 alembic
 asgi_lifespan
 argon2_cffi
+asyncio
 asyncpg
 bcrypt
 black

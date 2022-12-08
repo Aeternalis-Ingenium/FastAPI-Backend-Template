@@ -1,0 +1,100 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: db
+    restart: always
+    environment:
+      - POSTGRES_USER=${POSTGRES_USERNAME}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - PGDATA=/var/lib/postgresql/data/
+    volumes:
+      - postgresql_db_data:/var/lib/postgresql/data/
+    expose:
+      - 5432
+    ports:
+      - 5433:5432
+
+  db_editor:
+    image: adminer
+    container_name: db_editor
+    restart: always
+    environment:
+      - POSTGRES_USER=${POSTGRES_USERNAME}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - POSTGRES_DB=${POSTGRES_DB}
+    expose:
+      - 8080
+    ports:
+      - 8081:8080
+    depends_on:
+      - db
+
+  backend_app:
+    container_name: backend_app
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./backend/
+    environment:
+      - ENVIRONMENT=${ENVIRONMENT}
+      - DEBUG=${DEBUG}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - POSTGRES_SCHEMA=${POSTGRES_SCHEMA}
+      - POSTGRES_USERNAME=${POSTGRES_USERNAME}
+      - BACKEND_SERVER_HOST=${BACKEND_SERVER_HOST}
+      - BACKEND_SERVER_PORT=${BACKEND_SERVER_PORT}
+      - BACKEND_SERVER_WORKERS=${BACKEND_SERVER_WORKERS}
+      - DB_TIMEOUT=${DB_TIMEOUT}
+      - DB_POOL_SIZE=${DB_POOL_SIZE}
+      - DB_MAX_POOL_CON=${DB_MAX_POOL_CON}
+      - DB_POOL_OVERFLOW=${DB_POOL_OVERFLOW}
+      - IS_DB_ECHO_LOG=${IS_DB_ECHO_LOG}
+      - IS_DB_EXPIRE_ON_COMMIT=${IS_DB_EXPIRE_ON_COMMIT}
+      - IS_DB_FORCE_ROLLBACK=${IS_DB_FORCE_ROLLBACK}
+      - IS_ALLOWED_CREDENTIALS=${IS_ALLOWED_CREDENTIALS}
+      - API_TOKEN=${API_TOKEN}
+      - AUTH_TOKEN=${AUTH_TOKEN}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+      - JWT_SUBJECT=${JWT_SUBJECT}
+      - JWT_TOKEN_PREFIX=${JWT_TOKEN_PREFIX}
+      - JWT_ALGORITHM=${JWT_ALGORITHM}
+      - JWT_MIN=${JWT_MIN}
+      - JWT_HOUR=${JWT_HOUR}
+      - JWT_DAY=${JWT_DAY}
+      - HASHING_ALGORITHM_LAYER_1=${HASHING_ALGORITHM_LAYER_1}
+      - HASHING_ALGORITHM_LAYER_2=${HASHING_ALGORITHM_LAYER_2}
+      - HASHING_SALT=${HASHING_SALT}
+    volumes:
+      - ./backend/:/usr/backend/
+    expose:
+      - 8000
+    ports:
+      - 8001:8000
+    depends_on:
+      - db
+
+  frontend_app:
+    container_name: frontend_app
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./frontend/
+    volumes:
+      - ./frontend/:/usr/frontend/
+    expose:
+      - 5173
+    ports:
+      - 5174:5173
+    depends_on:
+      - backend_app
+
+volumes:
+  postgresql_db_data:

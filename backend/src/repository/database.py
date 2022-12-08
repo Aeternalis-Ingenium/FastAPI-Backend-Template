@@ -24,14 +24,6 @@ class AsyncDatabase:
             poolclass=SQLAlchemyQueuePool,
         )
         self.async_session: SQLAlchemyAsyncSession = SQLAlchemyAsyncSession(bind=self.async_engine)
-
-        # sqlalchemy_async_sessionmaker(
-        #     bind=self.async_engine,
-        #     class_=SQLAlchemyAsyncSession,
-        #     autoflush=True,
-        #     expire_on_commit=True
-        # )   # type: ignore
-
         self.pool: SQLAlchemyPool = self.async_engine.pool
 
     @property

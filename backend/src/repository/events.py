@@ -38,7 +38,6 @@ async def initialize_db_connection(backend_app: fastapi.FastAPI) -> None:
     loguru.logger.info("Database Connection --- Establishing . . .")
 
     backend_app.state.db = async_db
-    backend_app.state.pool = async_db.pool
 
     async with backend_app.state.db.async_engine.begin() as connection:
         await initialize_db_tables(connection=connection)

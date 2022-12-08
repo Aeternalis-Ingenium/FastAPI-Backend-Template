@@ -2,7 +2,7 @@
 
 ## Qwik
 
-I choose this java script framework for my frontend becuase of its crazy time complexity: $\math{O}(1)$. Yes, it's literally instant! This framework is quite young, please read more here:
+I choose this java script framework for my frontend becuase of its crazy time complexity: $\mathcal{O}(1)$. Yes, it's literally instant! This framework is quite young, please read more here:
 
 - [Qwik Docs](https://qwik.builder.io/)
 - [Vite](https://vitejs.dev/)
@@ -26,14 +26,24 @@ This project is using Qwik with [QwikCity](https://qwik.builder.io/qwikcity/over
 
 Inside your project, you'll see the following directory structure:
 
-```
-├── public/
+```shell
+frontned/
+├── coverage/           # Test reports
+├── public/             # JSON, SVG, TXT files
 │   └── ...
-└── src/
-    ├── components/
+└── src/                # The main frontend application source code
+    ├── components/     # Components-related code storage
     │   └── ...
-    └── routes/
+    └── routes/         # API endpoints
         └── ...
+├── .eslintignore       # ESLint-configuration file for `ignore` list
+├── .eslintrc.cjs       # ESLint-related configuration file
+├── jest.config.js      # Test / JEST-related configuration file
+├── package.json        # Package-related confugiration file
+├── pnpm-lock.yaml      # Package installed for frontend app
+├── README.md           # Documentation file for frontend app
+├── tsconfig.json       # TypeScript-related configuration file
+├── vite.config.ts      # Vite-related configuration file
 ```
 
 - `src/routes`: Provides the directory based routing, which can include a hierarchy of `layout.tsx` layout files, and an `index.tsx` file as the page. Additionally, `index.ts` files are endpoints. Please see the [routing docs](https://qwik.builder.io/qwikcity/routing/overview/) for more info.
@@ -49,7 +59,7 @@ Inside your project, you'll see the following directory structure:
 Use the `pnpm qwik add` command to add additional integrations. Some examples of integrations include: Cloudflare, Netlify or Express server, and the [Static Site Generator (SSG)](https://qwik.builder.io/qwikcity/static-site-generation/static-site-config/).
 
 ```shell
-pnpm qwik add # or `yarn qwik add`
+pnpm qwik add
 ```
 
 ---
@@ -58,33 +68,33 @@ pnpm qwik add # or `yarn qwik add`
 
 Like any other frameworks, `Qwik` has its commands.
 
-### Development
+### Run Development Server
 
 Development mode uses [Vite's development server](https://vitejs.dev/). During development, the `dev` command will server-side render (SSR) the output.
 
 ```shell
-npm start # or `yarn start`
+pnpm start
 ```
 
 > Note: during dev mode, Vite may request a significant number of `.js` files. This does not represent a Qwik production build.
 
-### Preview
+### Run Preview
 
 The preview command will create a production build of the client modules, a production build of `src/entry.preview.tsx`, and run a local server. The preview server is only for convenience to locally preview a production build, and it should not be used as a production server.
 
 ```shell
-pnpm preview # or `yarn preview`
+pnpm preview
 ```
 
-### Production
+### Run in Production
 
 The production build will generate client and server modules by running both client and server build commands. Additionally, the build command will use Typescript to run a type check on the source code.
 
 ```shell
-pnpm build # or `yarn build`
+pnpm build
 ```
 
-### Linter
+### Run Linter
 
 I use `ESLint` and `Prettier` with their `typescipt` plugin to lint for our Java Sctiptcode.
 To utilize `ESLint`, run:
@@ -107,7 +117,7 @@ pnpm fmt
 
 ---
 
-## Test
+## Run Test
 
 For testing our frontend application's soruce code, I chose [TS-Jest](https://kulshekhar.github.io/ts-jest/). To run the test, execute this command:
 

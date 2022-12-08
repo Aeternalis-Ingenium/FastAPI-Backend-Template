@@ -17,3 +17,4 @@ requirements-lint.txt
 requirements-test.txt
 requirements-dev.txt
 requirements-prod.txt
+node_modules
