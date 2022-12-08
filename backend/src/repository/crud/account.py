@@ -61,7 +61,7 @@ class AccountCRUDRepository(BaseCRUDRepository):
 
         return query.scalar()  # type: ignore
 
-    async def read_user_with_password_authentication(self, account_login: AccountInLogin) -> Account:
+    async def read_user_by_password_authentication(self, account_login: AccountInLogin) -> Account:
         stmt = sqlalchemy.select(Account).where(
             Account.username == account_login.username, Account.email == account_login.email
         )
@@ -81,12 +81,12 @@ class AccountCRUDRepository(BaseCRUDRepository):
 
         select_stmt = sqlalchemy.select(Account).where(Account.id == id)
         query = await self.async_session.execute(statement=select_stmt)
-        updated_account = query.scalar()
+        update_account = query.scalar()
 
-        if not updated_account:
+        if not update_account:
             raise EntityDoesNotExist(f"Account with id `{id}` does not exist!")  # type: ignore
 
-        update_stmt = sqlalchemy.update(Account).where(Account.id == updated_account.id).values(updated_at=sqlalchemy_functions.now())  # type: ignore
+        update_stmt = sqlalchemy.update(table=Account).where(Account.id == update_account.id).values(updated_at=sqlalchemy_functions.now())  # type: ignore
 
         if new_account_data["username"]:
             update_stmt = update_stmt.values(username=new_account_data["username"])
@@ -95,25 +95,25 @@ class AccountCRUDRepository(BaseCRUDRepository):
             update_stmt = update_stmt.values(username=new_account_data["email"])
 
         if new_account_data["password"]:
-            updated_account.set_hash_salt(hash_salt=pwd_generator.generate_salt)  # type: ignore
-            updated_account.set_hashed_password(hashed_password=pwd_generator.generate_hashed_password(hash_salt=updated_account.hash_salt, new_password=new_account_data["password"]))  # type: ignore
+            update_account.set_hash_salt(hash_salt=pwd_generator.generate_salt)  # type: ignore
+            update_account.set_hashed_password(hashed_password=pwd_generator.generate_hashed_password(hash_salt=update_account.hash_salt, new_password=new_account_data["password"]))  # type: ignore
 
         await self.async_session.execute(statement=update_stmt)
         await self.async_session.commit()
-        await self.async_session.refresh(instance=updated_account)
+        await self.async_session.refresh(instance=update_account)
 
-        return updated_account  # type: ignore
+        return update_account  # type: ignore
 
     async def delete_account_by_id(self, id: int) -> str:
 
         select_stmt = sqlalchemy.select(Account).where(Account.id == id)
         query = await self.async_session.execute(statement=select_stmt)
-        updated_account = query.scalar()
+        delete_account = query.scalar()
 
-        if not updated_account:
+        if not delete_account:
             raise EntityDoesNotExist(f"Account with id `{id}` does not exist!")  # type: ignore
 
-        stmt = sqlalchemy.delete(table=Account).where(Account.id == id)
+        stmt = sqlalchemy.delete(table=Account).where(Account.id == delete_account.id)
 
         await self.async_session.execute(statement=stmt)
         await self.async_session.commit()

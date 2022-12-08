@@ -61,7 +61,7 @@ async def signin(
 ) -> AccountInResponse:
 
     try:
-        db_account = await account_repo.read_user_with_password_authentication(account_login=account_login)
+        db_account = await account_repo.read_user_by_password_authentication(account_login=account_login)
 
     except Exception:
         raise await http_exc_400_credentials_bad_signin_request()

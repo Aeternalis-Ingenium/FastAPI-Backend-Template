@@ -2,10 +2,10 @@
 
 This is a template repository aimed to kick start your project in the most comprehensive way! Now, let's disect the weird abbreviation from this repository title **DAQSQL FAQ** which stands for:
 
-* [Dockerized](https://www.docker.com/)
-* [Asynchronous PostgreSQL](https://www.postgresql.org/docs/current/libpq-async.html)
-* [FastAPI](https://fastapi.tiangolo.com/)
-* [Qwik](https://qwik.builder.io/)
+* 🐳 [Dockerized](https://www.docker.com/)
+* 🐘 [Asynchronous PostgreSQL](https://www.postgresql.org/docs/current/libpq-async.html)
+* 🐍 [FastAPI](https://fastapi.tiangolo.com/)
+* ⚡️ [Qwik](https://qwik.builder.io/)
 
 ## Why FAQ-Stack?
 
@@ -43,6 +43,8 @@ The above listed technologies are just the main ones. There are other technologi
 The choice for my project development worklow is usually the [Trund-Based Development](https://trunkbaseddevelopment.com/), hence the name `trunk` for the main branch repository instead of `master` or `main`.
 
 ## Using this Template
+
+Before we start, create a directory named `coverage` in both `backend/` and `frontend/` for our testing reports. You don#t see them now because it is listed in `.gitignore`.
 
 To use this template click "use this template" in the repository header and choose "create new repository". Done! You welcome!
 
