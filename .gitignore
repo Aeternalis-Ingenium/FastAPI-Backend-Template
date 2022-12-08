@@ -3,16 +3,23 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# C/C++ production directory
+# Builds
 /build
 */build
 *.so
+/dist
+/lib
+/lib-types
+/server
 
 # Cache
 .cache
 .pytest_cache/
 .webassets-cache
 .mypy_cache/
+.mf
+.rollup.cache
+tsconfig.tsbuildinfo
 
 # Celery (Python's asynchronous task queues framework)
 celerybeat-schedule
@@ -26,6 +33,14 @@ celerybeat-schedule
 .project
 .settings/
 .vscode/
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
 # Database-related
 *.sqlite3
@@ -88,13 +103,15 @@ prod.env
 # Jupyter Notebook
 .ipynb_checkpoints
 
-# Log files
-pip-log.txt
-pip-delete-this-directory.txt
+# Log Files
+logs
 *.log
+pip-log.txt
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
 # Project settings
 local_settings.py
@@ -125,7 +142,7 @@ htmlcov/
 .tox/
 .coverage
 .coverage.*
-#coverage/
+coverage/
 nosetests.xml
 cpverage.html
 coverage.xml
@@ -139,5 +156,8 @@ cov.html
 .venv
 venv/
 venv.bak/
-*/node_modules/
 node_modules/
+
+# Yarn
+.yarn/*
+!.yarn/releases
