@@ -1,5 +1,10 @@
 <h1 align=center><strong>DAPSQL FAR Project Template</strong></h1>
 
+Backend | Frontend | Test
+-- | -- | --
+[![CI - Backend](https://github.com/Aeternalis-Ingenium/DAPSQL-FART-Stack-Template/actions/workflows/ci-backend.yaml/badge.svg?branch=trunk)](https://github.com/Aeternalis-Ingenium/DAPSQL-FART-Stack-Template/actions/workflows/ci-backend.yaml)| [![CI - Frontend](https://github.com/Aeternalis-Ingenium/DAPSQL-FART-Stack-Template/actions/workflows/ci-frontend.yaml/badge.svg?branch=trunk)](https://github.com/Aeternalis-Ingenium/DAPSQL-FART-Stack-Template/actions/workflows/ci-frontend.yaml) | -
+
+
 This is a template repository aimed to kick start your project with a setup from a real-world application! Now, let's disect the weird abbreviation from this repository title **DAQSQL FARN** which stands for:
 
 * 🐳 [Dockerized](https://www.docker.com/)
