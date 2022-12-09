@@ -97,7 +97,7 @@ jobs:
       run:
         working-directory: frontend/
     env:
-      CODECOV_TOKEN: ${{ ssecrets.CODECOV_TOKEN }}
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
     runs-on: ${{ matrix.os }}
 

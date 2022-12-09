@@ -148,25 +148,18 @@ Not a beginner? Great, here is the step to setup this template repository:
     docker exec frontend_app pnpm test  # frontend
    ```
 
-8. Delete these files:
-
-    * `README.md`
-    * `CONTAINER.md`
-    * `CICD.md`
-    * `backend/README.md`
-    * `frontend/README.md`
 
 After running the inishing setup, you can go to all the URL addresses, to make sure that the containers are all running error-free!
 
 ---
 
-## Guide
+## More Setup Guide
 
-I also wrote some compact guide of what has been set up in this template repository. Find it below, if you are interested:
+I also wrote something about each stack in its respective directories:
 
 * [Part I: Backend App](https://github.com/Aeternalis-Ingenium/DAPSQL-FART-Stack-Template/trunk/backend)
 * [Part II: Frontend App](https://github.com/Aeternalis-Ingenium/DAPSQL-FART-Stack-Template/trunk/frontend)
-* [Part III: Containerization](https://github.com/Aeternalis-Ingenium/DAPSQL-FART-Stack-Template/trunk/CONTAINER.md)
-* [Part IV: CI/CD](https://github.com/Aeternalis-Ingenium/DAPSQL-FART-Stack-Template/trunk/CICD.md)
+
+There is also a PDF file that comes with the repo to further explain what has been done here and more resources to look into 🚀
 
 ---
