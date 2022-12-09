@@ -1,4 +1,4 @@
-name: 'CI - Dashboard Frontend'
+name: 'CI - Frontend'
 on:
   workflow_dispatch:
   push:

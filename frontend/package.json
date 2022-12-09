@@ -22,8 +22,8 @@
         "fmt:check": "prettier --check './src/**/*.{tsx,ts}' --config ./.prettierrc.json",
         "fmt:fix": "prettier --write './src/**/*.{tsx,ts}' --config ./.prettierrc.json",
         "start": "react-scripts start",
-        "test:notestpass": "react-scripts test --passWithNoTests",
-        "test": "react-scripts test",
+        "test:notestpass": "react-scripts test --passWithNoTests --coverage",
+        "test": "react-scripts test --coverage",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {

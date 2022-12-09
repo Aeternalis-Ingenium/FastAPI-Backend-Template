@@ -142,7 +142,7 @@ htmlcov/
 .tox/
 .coverage
 .coverage.*
-coverage/
+**/coverage/**
 nosetests.xml
 cpverage.html
 coverage.xml
@@ -150,6 +150,7 @@ cov.xml
 cov.html
 *.cover
 .hypothesis/
+
 
 # Virtual Environment & packages
 .python-version
