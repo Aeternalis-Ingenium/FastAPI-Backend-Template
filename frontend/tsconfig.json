@@ -1,26 +1,26 @@
 {
-  "compilerOptions": {
+    "compilerOptions": {
+        "target": "es5",
+        "lib": [
+        "dom",
+        "dom.iterable",
+        "esnext"
+    ],
     "allowJs": true,
-    "target": "ES2017",
-    "module": "ES2020",
-    "lib": ["es2020", "DOM", "WebWorker", "DOM.Iterable"],
-    "jsx": "react-jsx",
-    "jsxImportSource": "@builder.io/qwik",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
     "moduleResolution": "node",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "incremental": true,
+    "resolveJsonModule": true,
     "isolatedModules": true,
-    "outDir": "tmp",
     "noEmit": true,
-    "types": ["node", "vite/client"],
-    "paths": {
-      "~/*": ["./src/*"]
-    }
-  },
-  "files": ["./.eslintrc.cjs"],
-  "include": ["src", "./vite.config.ts", "./jest.config.js"]
+    "jsx": "react-jsx"
+    },
+    "include": [
+        "src"
+    ]
 }

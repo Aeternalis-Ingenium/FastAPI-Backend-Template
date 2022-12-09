@@ -7,6 +7,9 @@ RUN npm i -g pnpm
 # Set the working directory
 WORKDIR /usr/frontend
 
+# Add node modules into PATH
+ENV PATH /usr/frontend/node_modules/.bin:$PATH
+
 # Set the server port
 EXPOSE 3000
 

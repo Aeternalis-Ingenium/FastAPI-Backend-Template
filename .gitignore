@@ -73,7 +73,7 @@ docs/_build/
 # Dotenvs
 /.pnp
 .pnp.js
-#.env
+.env
 env/
 ENV/
 env.bak/

@@ -1,11 +1,11 @@
-<h1 align=center><strong>Frontend Application ⚡️</strong></h1>
+<h1 align=center><strong>Frontend Application 🧬</strong></h1>
 
-## Qwik
+## React
 
-I choose this java script framework for my frontend becuase of its crazy time complexity: $\mathcal{O}(1)$. Yes, it's literally instant! This framework is quite young, please read more here:
+I chose React JS + TypeScript because they are the industry standard for frontend development,but yet quite easy to start with. Please read more about them here:
 
-- [Qwik Docs](https://qwik.builder.io/)
-- [Vite](https://vitejs.dev/)
+- [React JS](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
 
 Before we start, create a directory named `coverage` in both `backend/` and `frontend/` for our testing reports. You don#t see them now because it is listed in `.gitignore`.
 
@@ -16,113 +16,103 @@ Before we start, create a directory named `coverage` in both `backend/` and `fro
 You will realize that I will only use the keyword `pnpm` for the frontend application. Read more about [PNPM](https://pnpm.io/). But, why use `pnpm`?
 
 * Basicall `pnpm` = `npm` + `npx` on steroid that takes care ofsecurity vulnerabilities found in `npm` (I never ever need to delete that chatty GitHub bot's reminder that notifies me about the package vulnerability from`npm`!).
-* `pnpm` is faster because it simply links files from the global sotre, while other copies files from its cache.
+* `pnpm` is faster because it simply links files from the global store, while other copies files from its cache (no need to understand what global store is for now 😉).
 
 ---
 
 ## Project Structure
-
-This project is using Qwik with [QwikCity](https://qwik.builder.io/qwikcity/overview/). QwikCity is just a extra set of tools on top of Qwik to make it easier to build a full site, including directory-based routing, layouts, and more.
 
 Inside your project, you'll see the following directory structure:
 
 ```shell
 frontned/
 ├── coverage/           # Test reports
-├── public/             # JSON, SVG, TXT files
+├── public/             # Static assets (JSON, SVG, TXT files)
 │   └── ...
-└── src/                # The main frontend application source code
-    ├── components/     # Components-related code storage
-    │   └── ...
-    └── routes/         # API endpoints
-        └── ...
-├── .eslintignore       # ESLint-configuration file for `ignore` list
-├── .eslintrc.cjs       # ESLint-related configuration file
-├── jest.config.js      # Test / JEST-related configuration file
+├── src/                # The main frontend application source code
+    ├── components/     # Components storage
+        ├── ...
+    ├── routes/         # Enpoint routes
+        ├── ...
+├── .eslintrc.json      # ESLint (linting) configuration file
+├── .npmrc              # PNPM/NPM configuratin file
+├── .prettierrc.json    # Prettier-configuration file
+├── jest.config.js      # JEST (testing) configuration file
 ├── package.json        # Package-related confugiration file
-├── pnpm-lock.yaml      # Package installed for frontend app
+├── pnpm-lock.yaml      # Locked packages with the version installed for frontend app
 ├── README.md           # Documentation file for frontend app
 ├── tsconfig.json       # TypeScript-related configuration file
-├── vite.config.ts      # Vite-related configuration file
-```
-
-- `src/routes`: Provides the directory based routing, which can include a hierarchy of `layout.tsx` layout files, and an `index.tsx` file as the page. Additionally, `index.ts` files are endpoints. Please see the [routing docs](https://qwik.builder.io/qwikcity/routing/overview/) for more info.
-
-- `src/components`: Recommended directory for components.
-
-- `public`: Any static assets, like images, can be placed in the public directory. Please see the [Vite public directory](https://vitejs.dev/guide/assets.html#the-public-directory) for more info.
-
----
-
-## Add Integrations and Deployment
-
-Use the `pnpm qwik add` command to add additional integrations. Some examples of integrations include: Cloudflare, Netlify or Express server, and the [Static Site Generator (SSG)](https://qwik.builder.io/qwikcity/static-site-generation/static-site-config/).
-
-```shell
-pnpm qwik add
 ```
 
 ---
 
-## Commands in Qwik with PNPM
+## Important Commands with PNPM
 
-Like any other frameworks, `Qwik` has its commands.
+The commands are more or less the same ones between `npm`, `npx`, `yarn`, and `pnpm`.
 
-### Run Development Server
+* Run Development Server
 
-Development mode uses [Vite's development server](https://vitejs.dev/). During development, the `dev` command will server-side render (SSR) the output.
+    ```shell
+    pnpm start
+    ```
 
-```shell
-pnpm start
-```
 
-> Note: during dev mode, Vite may request a significant number of `.js` files. This does not represent a Qwik production build.
+* Run in Production
 
-### Run Preview
+    The production build will generate client and server modules by running both client and server build commands. Additionally, the build command will use Typescript to run a type check on the source code.
 
-The preview command will create a production build of the client modules, a production build of `src/entry.preview.tsx`, and run a local server. The preview server is only for convenience to locally preview a production build, and it should not be used as a production server.
+    ```shell
+    pnpm build
+    ```
 
-```shell
-pnpm preview
-```
+* Run Linter
 
-### Run in Production
+    I use `ESLint` and `Prettier` with their `typescipt` plugin to lint and format our Java Script code. To utilize `ESLint`, run:
 
-The production build will generate client and server modules by running both client and server build commands. Additionally, the build command will use Typescript to run a type check on the source code.
+    * Inspection only with `Prettier`
 
-```shell
-pnpm build
-```
+        ```shell
+        pnpm lint:check
+        ```
 
-### Run Linter
+    * Inspection + fixing the code with `Prettier`
 
-I use `ESLint` and `Prettier` with their `typescipt` plugin to lint for our Java Sctiptcode.
-To utilize `ESLint`, run:
+        ```shell
+        pnpm lint:fix
+        ```
 
-```shell
-pnpm lint
-```
+    * Inspection only with `ESLint`
 
-To utilize `Prettier` for checking purpose, run:
+        ```shell
+        pnpm fmt:check
+        ```
 
-```shell
-pnpm fmt.check
-```
+    * Inspection + fixing the code with `ESLint`
 
-To utilize `Prettier` for formatting our source code; run:
-
-```shell
-pnpm fmt
-```
+        ```shell
+        pnpm fmt:fix
+        ```
 
 ---
 
 ## Run Test
 
-For testing our frontend application's soruce code, I chose [TS-Jest](https://kulshekhar.github.io/ts-jest/). To run the test, execute this command:
+For testing our frontend application's soruce code, I chose [TS-Jest](https://kulshekhar.github.io/ts-jest/). Even though the test is set up, as a beginner, I sometimes don't want to test my application right away. This is no problem! Because I set up the test with the extra argument `--passWithNoTests` which still lets you test your code, but also passes the test **IF** you are too lazy to write a test. This approach might be useful for you, if you want to learn CI/CD 😉
 
-```shell
-pnpm test
-```
+* Test, but pass the test without any test code:
+
+    ```shell
+    pnpm test:notestpass
+    ```
+
+* Test:
+
+    ```shell
+    pnpm test
+    ```
 
 ---
+
+## What's Next?
+
+Next, we you will see how I set up the `Docker` container! Click [here](https://github.com/Aeternalis-Ingenium/DAPSQL-FART-Stack-Template/trunk/CONTAINER.md)

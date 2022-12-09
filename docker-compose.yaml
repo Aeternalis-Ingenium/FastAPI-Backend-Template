@@ -90,9 +90,9 @@ services:
     volumes:
       - ./frontend/:/usr/frontend/
     expose:
-      - 5173
+      - 3000
     ports:
-      - 5174:5173
+      - 3001:3000
     depends_on:
       - backend_app
 

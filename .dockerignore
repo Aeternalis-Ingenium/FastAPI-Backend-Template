@@ -1,7 +1,6 @@
 .mypy_cache
 .pytest_cache
 __pycache__
-coverage
 .coverage
 .gitignore
 .github
@@ -17,4 +16,5 @@ requirements-lint.txt
 requirements-test.txt
 requirements-dev.txt
 requirements-prod.txt
-node_modules
+CONTAINER.md
+README.md

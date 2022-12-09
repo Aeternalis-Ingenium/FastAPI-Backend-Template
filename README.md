@@ -1,18 +1,25 @@
-<h1 align=center><strong>DAPSQL FAQ-Stack Project Template</strong></h1>
+<h1 align=center><strong>DAPSQL FARN-Stack Project Template</strong></h1>
 
-This is a template repository aimed to kick start your project in the most comprehensive way! Now, let's disect the weird abbreviation from this repository title **DAQSQL FAQ** which stands for:
+This is a template repository aimed to kick start your project with a setup from a real-world application! Now, let's disect the weird abbreviation from this repository title **DAQSQL FARN** which stands for:
 
 * 🐳 [Dockerized](https://www.docker.com/)
 * 🐘 [Asynchronous PostgreSQL](https://www.postgresql.org/docs/current/libpq-async.html)
 * 🐍 [FastAPI](https://fastapi.tiangolo.com/)
-* ⚡️ [Qwik](https://qwik.builder.io/)
+* 🧬 [ReactJS](https://reactjs.org/)
+* 💻 [TypeScript](https://www.typescriptlang.org/)
 
-## Why FAQ-Stack?
+When the `Docker` is started, these are the URL addresses:
 
-Well, the easy anser is Speed! And by speed I mean "the Flash type of speed"!
+* Backend Application (API docs) $\rightarrow$ http://localhost:8001/docs
+* Frontend Application $\rightarrow$ http://localhost:3001
+* Database editor (Adminer) $\rightarrow$ http//lcoalhost:8081
+
+## Why FARN-Stack?
+
+Well, the easy anser is **Asynchronousity** and **Speed**!
 
 * **FastAPI** is crowned as the fastest web framework for Python and thus we use it for our backend development.
-* Meanwhile, **Qwik** is a young web framework written in Java Script that offers the fastest possile page load times regardless the complexity of our website! Check them both in the above link.
+* Meanwhile, **React** is a Java Script web framework that is easy to handle and offers lots of libraries from its community.
 * The database of my choice is the **asynchronous** version of **PostgreSQL** (via [SQLAlchemy 2.0](https://docs.sqlalchemy.org/en/20/orm/extensions/asyncio.html)). Why asynchronous? Well.. Speed! Read [this blog from Packt](https://subscription.packtpub.com/book/programming/9781838821135/6/ch06lvl1sec32/synchronous-asynchronous-and-threaded-execution) if you want to educate yourself further about the topic **Asynchronous, Synchronous, Concurrency,** and **Parallelism**.
 * And **Docker** is the technology that will hold your team together because your app will live in a container where the gravity of your personal machine specs don't matter anymore!
 
@@ -44,17 +51,114 @@ The choice for my project development worklow is usually the [Trund-Based Develo
 
 ## Using this Template
 
-Before we start, create a directory named `coverage` in both `backend/` and `frontend/` for our testing reports. You don#t see them now because it is listed in `.gitignore`.
+Not a beginner? Great, here is the step to setup this template repository:
 
-To use this template click "use this template" in the repository header and choose "create new repository". Done! You welcome!
+1. Backend setup:
+   The backend server runs on http://localhost:8000
 
-## Installation
+    ```shell
+    cd backend
 
-After having your own repository with this project template, please go through all the steps to install all the requirements with the following order:
+    mdkir coverage
 
-* [Part I: Backend App](https://github.com/Aeternalis-Ingenium/DAPSQL-FAQ-Stack-Template/trunk/backend)
-* [Part II: Frontend App](https://github.com/Aeternalis-Ingenium/DAPSQL-FAQ-Stack-Template/trunk/frontend)
-* [Part III: Containerization](https://github.com/Aeternalis-Ingenium/DAPSQL-FAQ-Stack-Template/trunk/CONTAINER.md)
-* [Part IV: CI/CD](https://github.com/Aeternalis-Ingenium/DAPSQL-FAQ-Stack-Template/trunk/.github)
+    pyenv virtualenv 3.11.0 any_venv_name
+    pyenv local any_venv_name
+
+    pip3 install -r requirements.txt
+
+    # Test run your backend server
+    uvicorn src.main:backend_app --reload
+
+    # Testing
+    pytest  # Might throw an error without docker becasue of the imports
+    ```
+
+2. Frontend setup:
+    The frontend server runs on http://localhost:3000
+
+    ```shell
+    cd frontend
+
+    mkdir coverage
+
+    pnpm install
+
+    # Test run your frontend server
+    pnpm start
+
+    # Lint with Prettier
+    pnpm lint:check # check only
+    pnpm lint:fix   # automatically auto fix the issue
+
+    # Lint with ESLint
+    pnpm fmt:check  # check only
+    pnpm fmt:fix    # automatically fix the issue
+
+    # Testing
+    pnpm test:notestpass    # Pass with no tests
+    pnpm test               # Fail without any test
+    ```
+
+3. `Pre-Commit` setup:
+    ```shell
+    # Make sure you are in the ROOT project directory
+    pre-commit install
+    pre-commit update
+    ```
+
+4. `.env` setup:
+    If you are not used to VIM or Linux CLI, then ignore the `echo` command and do it manually. All the secret variables for this template is located in `.env.example`.
+
+    If you want to have another names for the secret variables, don't forget to change them also in:
+
+    * `backend/src/config/base.py`
+    * `docker-compose.yaml`
+
+    ```shell
+    # Make sure you are in the ROOT project directory
+    touch .env
+
+    echo "SECRET_VARIABLE=SECRET_VARIABLE_VALUE" >> .env
+    ```
+
+5. `CODEOWNERS` setup:
+    Go to `.github/` and open `CODEOWNERS` file. This file is to assign the code to specific team member so you can distribute the weights of the project clearly.
+
+6. Docker setup:
+   ```shell
+    # Make sure you are in the ROOT project directory
+    chmod +x backend/entrypoint.sh
+    chmod +x frontend/entrypoint.sh
+
+    docker-compose build
+    docker-compose up
+
+    # Everytime you write a new code, update your container with:
+    docker-compose up -d --build
+   ```
+
+7. (IMPORTANT) Finishing setup:
+   ```shell
+    # Generate revision for the database auto-migrations
+    docker exec backend_app alembic revision --autogenerate -m "YOUR MIGRATION TITLE"
+    docker exec backend_app alembic upgrade head    # to register the database classes
+
+    # For testing within Docker container
+    docker exec backend_app pytest      # backend
+    docker exec frontend_app pnpm test  # frontend
+   ```
+
+After running the inishing setup, you can go to all the URL addresses, to make sure that the containers are all running error-free!
+
+---
+
+## Guide
+
+I also wrote some compact guide of what has been set up in this template repository. Find it below, if you are interested:
+
+* [Part I: Backend App](https://github.com/Aeternalis-Ingenium/DAPSQL-FART-Stack-Template/trunk/backend)
+* [Part II: Frontend App](https://github.com/Aeternalis-Ingenium/DAPSQL-FART-Stack-Template/trunk/frontend)
+* [Part III: Containerization](https://github.com/Aeternalis-Ingenium/DAPSQL-FART-Stack-Template/trunk/CONTAINER.md)
+* [Part IV: CI/CD](https://github.com/Aeternalis-Ingenium/DAPSQL-FART-Stack-Template/trunk/.github)
 
 ---
