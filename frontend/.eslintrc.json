@@ -24,9 +24,6 @@
             "version": "detect"
         }
     },
-    "plugins": [
-        "@typescript-eslint"
-    ],
     "rules": {
         "indent": [
             "error",
