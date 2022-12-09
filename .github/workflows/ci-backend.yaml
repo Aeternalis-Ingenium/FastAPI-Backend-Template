@@ -66,6 +66,9 @@ jobs:
         run:  |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Install Dependencies for Linting
+        run: |
+          pip install flake8
       - name: Lint with Black
         uses: psf/black@stable
         with:
@@ -169,7 +172,7 @@ jobs:
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          directory: ./backend./coverage//
+          directory: ./backend./coverage/
           fail_ci_if_error: false
           flags: backend_app_tests
           name: codecov-umbrella
