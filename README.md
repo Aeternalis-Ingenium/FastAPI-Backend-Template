@@ -148,8 +148,12 @@ Not a beginner? Great, here is the step to setup this template repository:
     docker exec frontend_app pnpm test  # frontend
    ```
 
+8. Go to https://about.codecov.io/, and sign up with your github to get the `CODECOV_TOKEN`
 
-After running the inishing setup, you can go to all the URL addresses, to make sure that the containers are all running error-free!
+9. Go to your GitHub and register all the secret variables in your repository (`settings` $\rightarrow$ (scroll down a bit) `Secrets` $\rightarrow$ `Actions` $\rightarrow$ `New repository secret`)
+
+**IMPORTANT**: Without the secrets registered in Codecov and GitHub, your `CI` will fail and life will be horrible 🤮🤬
+**IMPORTANT**: Remember to always run the container update every once in a while. Without the arguments `-d --build`, your `Docker` dashboard will be full of junk containers!
 
 ---
 
