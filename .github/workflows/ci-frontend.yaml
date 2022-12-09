@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    name: 'Dashboard Frontend: Build 🏗'
+    name: 'Build 🏗'
     strategy:
       matrix:
         os:
@@ -97,7 +97,7 @@ jobs:
       run:
         working-directory: frontend/
     env:
-      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      CODECOV_TOKEN: ${{ ssecrets.CODECOV_TOKEN }}
 
     runs-on: ${{ matrix.os }}
 
@@ -128,7 +128,7 @@ jobs:
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          directory: ./frontend/
+          directory: ./frontend/coverage/
           fail_ci_if_error: false
           flags: frontend_app_tests
           name: codecov-umbrella
