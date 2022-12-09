@@ -1,0 +1,179 @@
+name: 'CI - Backend'
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'feature/**'
+      - 'fix/**'
+  pull_request:
+    branches:
+      - 'feature/**'
+      - 'fix/**'
+
+jobs:
+  build:
+    name: 'Build 🏗'
+    strategy:
+      matrix:
+        os: 
+          - ubuntu-latest
+        python-version:
+          - "3.11"
+    defaults:
+      run:
+        working-directory: backend/
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Check repository
+        uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
+      - name: Install depenencies
+        run:  |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+  
+  code-quality:
+    name: 'Code-Quality 💎'
+    needs: build
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        python-version:
+          - "3.11"
+    defaults:
+      run:
+        working-directory: backend/
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Check repository
+        uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
+      - name: Install dev depenencies
+        run:  |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Install Dependencies for Linting
+        run: |
+          pip install "black>=22.1.0" "flake8>=3.9.2" "isort>=5.10.1" "mypy>=0.941" "pycodestyle>=2.7.0" "pylint>=2.12.2" "pyproject-flake8>=0.0.1a2"
+      - name: Lint with Black
+        uses: psf/black@stable
+        with:
+          options: "--exclude=tests/"
+          src: "backend/src/"
+      - name: Lint with Isort
+        run: |
+          isort . --profile black
+      - name: Lint with Flake8
+        run: |
+          # stop the build if there are Python syntax errors or undefined names
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+      - name: Lint with MyPy
+        run: |
+          mypy . --pretty
+ 
+  test:
+    name: 'Test 🔬'
+    needs: build
+    strategy:
+      matrix:
+        os: 
+          - ubuntu-latest
+        python-version:
+          - "3.11"
+    defaults:
+      run:
+        working-directory: backend/
+    services:
+      postgres:
+        image: postgres:14.2-alpine
+        env:
+          POSTGRES_DB: ${{  secrets.POSTGRES_DB  }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USERNAME }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+        ports:
+        - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
+      DEBUG: ${{ secrets.DEBUG }}
+      POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+      POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+      POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
+      POSTGRES_SCHEMA: ${{ secrets.POSTGRES_SCHEMA }}
+      POSTGRES_USERNAME: ${{ secrets.POSTGRES_USERNAME }}
+      BACKEND_SERVER_HOST: ${{ secrets.BACKEND_SERVER_HOST }}
+      BACKEND_SERVER_PORT: ${{ secrets.BACKEND_SERVER_PORT }}
+      BACKEND_SERVER_WORKERS: ${{ secrets.BACKEND_SERVER_WORKERS }}
+      DB_TIMEOUT: ${{ secrets.DB_TIMEOUT }}
+      DB_POOL_SIZE: ${{ secrets.DB_POOL_SIZE }}
+      DB_MAX_POOL_CON: ${{ secrets.DB_MAX_POOL_CON }}
+      DB_POOL_OVERFLOW: ${{ secrets.DB_POOL_OVERFLOW }}
+      IS_DB_ECHO_LOG: ${{ secrets.IS_DB_ECHO_LOG }}
+      IS_DB_EXPIRE_ON_COMMIT: ${{ secrets.IS_DB_EXPIRE_ON_COMMIT }}
+      IS_DB_FORCE_ROLLBACK: ${{ secrets.IS_DB_FORCE_ROLLBACK }}
+      IS_ALLOWED_CREDENTIALS: ${{ secrets.IS_ALLOWED_CREDENTIALS }}
+      API_TOKEN: ${{ secrets.API_TOKEN }}
+      AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
+      JWT_SUBJECT: ${{ secrets.JWT_SUBJECT }}
+      JWT_TOKEN_PREFIX: ${{ secrets.JWT_TOKEN_PREFIX }}
+      JWT_ALGORITHM: ${{ secrets.JWT_ALGORITHM }}
+      JWT_MIN: ${{ secrets.JWT_MIN }}
+      JWT_HOUR: ${{ secrets.JWT_HOUR }}
+      JWT_DAY: ${{ secrets.JWT_DAY }}
+      HASHING_ALGORITHM_LAYER_1: ${{ secrets.HASHING_ALGORITHM_LAYER_1 }}
+      HASHING_ALGORITHM_LAYER_2: ${{ secrets.HASHING_ALGORITHM_LAYER_2 }}
+      HASHING_SALT: ${{ secrets.HASHING_SALT }}
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Check repository
+        uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
+      - name: Install depenencies
+        run:  |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Install Dependencies for Testing
+        run: |
+          pip install pytest pytest-asyncio pytest pytest-xdist
+      - name: Test with Pytest-Cov
+        run: |
+          pytest --cov=./ --cov-report=xml
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          directory: ./backend/
+          fail_ci_if_error: false
+          flags: backend_app_tests
+          name: codecov-umbrella
+          verbose: true

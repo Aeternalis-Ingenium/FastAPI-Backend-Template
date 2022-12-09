@@ -1,0 +1,22 @@
+coverage:
+  status:
+    project: False
+    patch: False
+
+flag_management:
+  individual_flags:
+    - name: backend
+      paths:
+        - backend/
+      statuses:
+        - type: project
+          target: 60%
+          threshold: 1%
+
+    - name: frontend
+      paths:
+        - frontend/
+      statuses:
+        - type: project
+          target: 60%
+          threshold: 1%

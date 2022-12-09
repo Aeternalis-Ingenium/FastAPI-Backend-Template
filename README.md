@@ -1,4 +1,4 @@
-<h1 align=center><strong>DAPSQL FARN-Stack Project Template</strong></h1>
+<h1 align=center><strong>DAPSQL FAR Project Template</strong></h1>
 
 This is a template repository aimed to kick start your project with a setup from a real-world application! Now, let's disect the weird abbreviation from this repository title **DAQSQL FARN** which stands for:
 
@@ -148,6 +148,14 @@ Not a beginner? Great, here is the step to setup this template repository:
     docker exec frontend_app pnpm test  # frontend
    ```
 
+8. Delete these files:
+
+    * `README.md`
+    * `CONTAINER.md`
+    * `CICD.md`
+    * `backend/README.md`
+    * `frontend/README.md`
+
 After running the inishing setup, you can go to all the URL addresses, to make sure that the containers are all running error-free!
 
 ---
@@ -159,6 +167,6 @@ I also wrote some compact guide of what has been set up in this template reposit
 * [Part I: Backend App](https://github.com/Aeternalis-Ingenium/DAPSQL-FART-Stack-Template/trunk/backend)
 * [Part II: Frontend App](https://github.com/Aeternalis-Ingenium/DAPSQL-FART-Stack-Template/trunk/frontend)
 * [Part III: Containerization](https://github.com/Aeternalis-Ingenium/DAPSQL-FART-Stack-Template/trunk/CONTAINER.md)
-* [Part IV: CI/CD](https://github.com/Aeternalis-Ingenium/DAPSQL-FART-Stack-Template/trunk/.github)
+* [Part IV: CI/CD](https://github.com/Aeternalis-Ingenium/DAPSQL-FART-Stack-Template/trunk/CICD.md)
 
 ---

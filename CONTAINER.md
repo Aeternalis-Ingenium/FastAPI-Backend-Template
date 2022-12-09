@@ -5,7 +5,7 @@ I setup the container with `docker-compose` because it is straight forward and p
 1. Database with Postgres Server: `db`
 2. Adminer (Database Editor): `db_editor`
 3. Backend Application: `backend_app`
-4. Frontend APplication: `frontend_app`
+4. Frontend Application: `frontend_app`
 
 ## Dockerfile
 

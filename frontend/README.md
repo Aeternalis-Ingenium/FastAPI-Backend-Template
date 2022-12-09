@@ -1,7 +1,5 @@
 <h1 align=center><strong>Frontend Application 🧬</strong></h1>
 
-## React
-
 I chose React JS + TypeScript because they are the industry standard for frontend development,but yet quite easy to start with. Please read more about them here:
 
 - [React JS](https://reactjs.org/)
