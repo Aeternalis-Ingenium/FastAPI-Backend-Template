@@ -1,17 +1,11 @@
-<h1 align=center><strong>DAPSQL FAR Project Template</strong></h1>
-
-Backend | Frontend | Test
--- | -- | --
-[![CI - Backend](https://github.com/Aeternalis-Ingenium/DAPSQL-FART-Stack-Template/actions/workflows/ci-backend.yaml/badge.svg?branch=trunk)](https://github.com/Aeternalis-Ingenium/DAPSQL-FART-Stack-Template/actions/workflows/ci-backend.yaml)| [![CI - Frontend](https://github.com/Aeternalis-Ingenium/DAPSQL-FART-Stack-Template/actions/workflows/ci-frontend.yaml/badge.svg?branch=trunk)](https://github.com/Aeternalis-Ingenium/DAPSQL-FART-Stack-Template/actions/workflows/ci-frontend.yaml) | -
+<h1 align=center><strong>DA PAPI Project Template</strong></h1>
 
 
-This is a template repository aimed to kick start your project with a setup from a real-world application! Now, let's disect the weird abbreviation from this repository title **DAQSQL FARN** which stands for:
+This is a template repository aimed to kick start your project with a setup from a real-world application! Now, let's disect the weird abbreviation from this repository title **DA PAPI** which stands for:
 
 * 🐳 [Dockerized](https://www.docker.com/)
 * 🐘 [Asynchronous PostgreSQL](https://www.postgresql.org/docs/current/libpq-async.html)
 * 🐍 [FastAPI](https://fastapi.tiangolo.com/)
-* 🧬 [ReactJS](https://reactjs.org/)
-* 💻 [TypeScript](https://www.typescriptlang.org/)
 
 When the `Docker` is started, these are the URL addresses:
 
@@ -19,12 +13,11 @@ When the `Docker` is started, these are the URL addresses:
 * Frontend Application $\rightarrow$ http://localhost:3001
 * Database editor (Adminer) $\rightarrow$ http//lcoalhost:8081
 
-## Why FARN-Stack?
+## Why "DA PAPI"?
 
-Well, the easy anser is **Asynchronousity** and **Speed**!
+Well, the easy answer is **Asynchronousity** and **Speed**!
 
 * **FastAPI** is crowned as the fastest web framework for Python and thus we use it for our backend development.
-* Meanwhile, **React** is a Java Script web framework that is easy to handle and offers lots of libraries from its community.
 * The database of my choice is the **asynchronous** version of **PostgreSQL** (via [SQLAlchemy 2.0](https://docs.sqlalchemy.org/en/20/orm/extensions/asyncio.html)). Why asynchronous? Well.. Speed! Read [this blog from Packt](https://subscription.packtpub.com/book/programming/9781838821135/6/ch06lvl1sec32/synchronous-asynchronous-and-threaded-execution) if you want to educate yourself further about the topic **Asynchronous, Synchronous, Concurrency,** and **Parallelism**.
 * And **Docker** is the technology that will hold your team together because your app will live in a container where the gravity of your personal machine specs don't matter anymore!
 
@@ -35,18 +28,15 @@ The above listed technologies are just the main ones. There are other technologi
 * [TOML](https://toml.io/en/) $\rightarrow$ The one-for-all configuration file. This makes it simpler to setup our project.
 * [Pyenv](https://github.com/pyenv/pyenv) $\rightarrow$ The simplest way to manage our Python versions.
 * [Pyenv-VirtualEnv](https://github.com/pyenv/pyenv-virtualenv) $\rightarrow$ The plugin for `Pyenv` to manage the virtual environment for our packages.
-* [PNPM](https://pnpm.io/) $\rightarrow$ This is `NPM` + `Yarn` on steroid. The highly-enhanced version of `NPM` which is `JavaScript` framework manager like `Pyenv` for python.
 * [Pre-Commit](https://pre-commit.com/) $\rightarrow$ Git hook scripts to identify issues and quality of your code before pushing it to GitHub. These hooks are implemented for the following linting pakcages:
   * [Black (Python)](https://black.readthedocs.io/en/stable/) $\rightarrow$ Manage your code style with auto formatting and parallel continuous integration runner for Python.
   * [Isort (Python)](https://pycqa.github.io/isort/) $\rightarrow$ Sort your `import` for clarity. Also for Python. 
   * [MyPy (Python)](https://mypy.readthedocs.io/en/stable/) $\rightarrow$ A static type checker for Python that helps you write a cleaner code.
   * [ESLint (JavaScript)](https://eslint.org/) $\rightarrow$ Analyze your code for JavaScript.
+  * [Prettier](https://prettier.io/) $\rightarrow$ Format your JavaScript code to be more **prettier** 😜.
 * [Pre-Commit CI](https://pre-commit.ci/) $\rightarrow$ Continuous integration for our Pre-Commit hook that fixes and updates our hook versions.
-* [Prettier](https://prettier.io/) $\rightarrow$ Format your JavaScript code to be more **prettier** 😜.
-* [Husky](https://typicode.github.io/husky/#/) $\rightarrow$ Lint your commit messages, run tests, and javascript code.
 * [CodeCov](https://about.codecov.io/) $\rightarrow$ A platform that analyze the result of your automated tests.
 * [PyTest](https://docs.pytest.org/en/7.2.x/) $\rightarrow$ The testing framework for Python code.
-* [JEST](https://jestjs.io/) $\rightarrow$ The testing framework for JavaScript code.
 * [DBDiagram](https://dbdiagram.io/home) $\rightarrow$ A platform that lets your design your database by writing SQL and converting it into ERD. This paltform provides a complete symbol for entity relationships (not like many other platforms!).
 * [GitHub Actions](https://github.com/features/actions) $\rightarrow$ The platform to setup our CI/CD by GitHub.
 * [SQLAlchemy 2.0](https://docs.sqlalchemy.org/en/20/orm/extensions/asyncio.html) $\rightarrow$ The go-to database interface library for Python. The 2.0 is the most recent update where it provides asynchronous setup.
@@ -78,32 +68,6 @@ Not a beginner? Great, here is the step to setup this template repository:
     pytest  # Might throw an error without docker becasue of the imports
     ```
 
-2. Frontend setup:
-    The frontend server runs on http://localhost:3000
-
-    ```shell
-    cd frontend
-
-    mkdir coverage
-
-    pnpm install
-
-    # Test run your frontend server
-    pnpm start
-
-    # Lint with Prettier
-    pnpm lint:check # check only
-    pnpm lint:fix   # automatically auto fix the issue
-
-    # Lint with ESLint
-    pnpm fmt:check  # check only
-    pnpm fmt:fix    # automatically fix the issue
-
-    # Testing
-    pnpm test:notestpass    # Pass with no tests
-    pnpm test               # Fail without any test
-    ```
-
 3. `Pre-Commit` setup:
     ```shell
     # Make sure you are in the ROOT project directory
@@ -133,7 +97,7 @@ Not a beginner? Great, here is the step to setup this template repository:
    ```shell
     # Make sure you are in the ROOT project directory
     chmod +x backend/entrypoint.sh
-    chmod +x frontend/entrypoint.sh
+    #chmod +x frontend/entrypoint.sh    # if applied
 
     docker-compose build
     docker-compose up
@@ -167,7 +131,6 @@ Not a beginner? Great, here is the step to setup this template repository:
 I also wrote something about each stack in its respective directories:
 
 * [Part I: Backend App](https://github.com/Aeternalis-Ingenium/DAPSQL-FART-Stack-Template/trunk/backend)
-* [Part II: Frontend App](https://github.com/Aeternalis-Ingenium/DAPSQL-FART-Stack-Template/trunk/frontend)
 
 There is also a PDF file that comes with the repo to further explain what has been done here and more resources to look into 🚀
 

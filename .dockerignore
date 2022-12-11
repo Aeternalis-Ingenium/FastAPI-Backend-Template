@@ -18,3 +18,4 @@ requirements-dev.txt
 requirements-prod.txt
 CONTAINER.md
 README.md
+node_modules/

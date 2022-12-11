@@ -13,10 +13,10 @@ flag_management:
           target: 60%
           threshold: 1%
 
-    - name: frontend
-      paths:
-        - frontend/
-      statuses:
-        - type: project
-          target: 60%
-          threshold: 1%
+    # - name: frontend
+    #   paths:
+    #     - frontend/
+    #   statuses:
+    #     - type: project
+    #       target: 60%
+    #       threshold: 1%

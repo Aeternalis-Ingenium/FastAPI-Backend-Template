@@ -65,6 +65,7 @@ wheels/
 .installed.cfg
 *.egg
 MANIFEST
+.pnpm-store/
 
 # Documentation
 /site
