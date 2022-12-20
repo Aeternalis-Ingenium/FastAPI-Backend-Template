@@ -27,7 +27,7 @@ repos:
         args:
         - --config=backend/pyproject.toml
 -   repo: https://github.com/pycqa/isort
-    rev: 5.11.1
+    rev: v5.11.3
     hooks:
     -   id: isort
         name: isort (python)
@@ -46,7 +46,7 @@ repos:
       files: \.[jt]sx?$
       types_or: [css, javascript]
 -   repo: https://github.com/pre-commit/mirrors-eslint
-    rev: "v8.29.0"
+    rev: "v8.30.0"
     hooks:
     -   id: eslint
         files: \.[jt]sx?$  # *.js, *.jsx, *.ts and *.tsx
