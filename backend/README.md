@@ -237,7 +237,3 @@ requirements.txt                        # Packages installed for backend app
 ```
 
 ---
-
-## What's Next?
-
-From the back to the front! Check the frontend setup [here](https://github.com/Aeternalis-Ingenium/DAPSQL-FART-Stack-Template/trunk/frontend)
