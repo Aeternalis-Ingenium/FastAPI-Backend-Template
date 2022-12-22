@@ -132,7 +132,7 @@ Read morea bout how the `backend/` application is set up [here](https://github.c
 ## Final Step
 
 You can delete these 3 files (or change its content based on your need):
-- `License-md`
+- `LICENSE.md`
 - `README.md`
 - `backend/README.md`
 
