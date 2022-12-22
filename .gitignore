@@ -142,10 +142,9 @@ target/
 htmlcov/
 .tox/
 .coverage
-.coverage.*
 **/coverage/**
 nosetests.xml
-cpverage.html
+coverage.html
 coverage.xml
 cov.xml
 cov.html
