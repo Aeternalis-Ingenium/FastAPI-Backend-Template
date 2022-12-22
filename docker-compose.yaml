@@ -81,20 +81,5 @@ services:
     depends_on:
       - db
 
-  # frontend_app:
-  #   container_name: frontend_app
-  #   restart: always
-  #   build:
-  #     dockerfile: Dockerfile
-  #     context: ./frontend/
-  #   volumes:
-  #     - ./frontend/:/usr/frontend/
-  #   expose:
-  #     - 5173
-  #   ports:
-  #     - 5174:5173
-  #   depends_on:
-  #     - backend_app
-
 volumes:
   postgresql_db_data:
