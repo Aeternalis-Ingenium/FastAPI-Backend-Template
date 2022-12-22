@@ -128,3 +128,15 @@ Not a beginner? Great, here is the step to setup this template repository:
 Read morea bout how the `backend/` application is set up [here](https://github.com/Aeternalis-Ingenium/FastAPI-Backend-Template/trunk/backend)
 
 ---
+
+## Final Step
+
+You can delete these 3 files (or change its content based on your need):
+- `License-md`
+- `README.md`
+- `backend/README.md`
+
+---
+
+Enjoy your development and may your technology be forever useful to everyone 😉🚀🧬
+
