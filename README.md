@@ -121,13 +121,9 @@ Not a beginner? Great, here is the step to setup this template repository:
 **IMPORTANT**: Without the secrets registered in Codecov and GitHub, your `CI` will fail and life will be horrible 🤮🤬
 **IMPORTANT**: Remember to always run the container update every once in a while. Without the arguments `-d --build`, your `Docker` dashboard will be full of junk containers!
 
----
-
 ## What's Next?
 
 Read morea bout how the `backend/` application is set up [here](https://github.com/Aeternalis-Ingenium/FastAPI-Backend-Template/trunk/backend)
-
----
 
 ## Final Step
 
@@ -136,7 +132,6 @@ You can delete these 3 files (or change its content based on your need):
 - `README.md`
 - `backend/README.md`
 
----
-
 Enjoy your development and may your technology be forever useful to everyone 😉🚀🧬
 
+---
