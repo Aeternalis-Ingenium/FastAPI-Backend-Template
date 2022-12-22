@@ -1,7 +1,7 @@
-<h1 align=center><strong>DA PAPI Project Template</strong></h1>
+<h1 align=center><strong>FastAPI Backend Application Template</strong></h1>
 
 
-This is a template repository aimed to kick start your project with a setup from a real-world application! Now, let's disect the weird abbreviation from this repository title **DA PAPI** which stands for:
+This is a template repository aimed to kick start your project with a setup from a real-world application! This template utilizes the following tech-stack:
 
 * 🐳 [Dockerized](https://www.docker.com/)
 * 🐘 [Asynchronous PostgreSQL](https://www.postgresql.org/docs/current/libpq-async.html)
@@ -10,10 +10,9 @@ This is a template repository aimed to kick start your project with a setup from
 When the `Docker` is started, these are the URL addresses:
 
 * Backend Application (API docs) $\rightarrow$ http://localhost:8001/docs
-* Frontend Application $\rightarrow$ http://localhost:3001
 * Database editor (Adminer) $\rightarrow$ http//lcoalhost:8081
 
-## Why "DA PAPI"?
+## Why the above Tech-Stack?
 
 Well, the easy answer is **Asynchronousity** and **Speed**!
 
@@ -97,7 +96,6 @@ Not a beginner? Great, here is the step to setup this template repository:
    ```shell
     # Make sure you are in the ROOT project directory
     chmod +x backend/entrypoint.sh
-    #chmod +x frontend/entrypoint.sh    # if applied
 
     docker-compose build
     docker-compose up
@@ -114,7 +112,6 @@ Not a beginner? Great, here is the step to setup this template repository:
 
     # For testing within Docker container
     docker exec backend_app pytest      # backend
-    docker exec frontend_app pnpm test  # frontend
    ```
 
 8. Go to https://about.codecov.io/, and sign up with your github to get the `CODECOV_TOKEN`
@@ -126,12 +123,8 @@ Not a beginner? Great, here is the step to setup this template repository:
 
 ---
 
-## More Setup Guide
+## What's Next?
 
-I also wrote something about each stack in its respective directories:
-
-* [Part I: Backend App](https://github.com/Aeternalis-Ingenium/DAPSQL-FART-Stack-Template/trunk/backend)
-
-There is also a PDF file that comes with the repo to further explain what has been done here and more resources to look into 🚀
+Read morea bout how the `backend/` application is set up [here](https://github.com/Aeternalis-Ingenium/FastAPI-Backend-Template/trunk/backend)
 
 ---
