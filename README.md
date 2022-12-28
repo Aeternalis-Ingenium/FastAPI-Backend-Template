@@ -9,16 +9,18 @@ This is a template repository aimed to kick start your project with a setup from
 
 When the `Docker` is started, these are the URL addresses:
 
-* Backend Application (API docs) $\rightarrow$ http://localhost:8001/docs
-* Database editor (Adminer) $\rightarrow$ http//lcoalhost:8081
+* Backend Application (API docs) $\rightarrow$ `http://localhost:8001/docs`
+* Database editor (Adminer) $\rightarrow$ `http//localhost:8081`
+
+The backend API without `Docker` can be found in `http://localhost:8000/docs`.
 
 ## Why the above Tech-Stack?
 
 Well, the easy answer is **Asynchronousity** and **Speed**!
 
 * **FastAPI** is crowned as the fastest web framework for Python and thus we use it for our backend development.
-* The database of my choice is the **asynchronous** version of **PostgreSQL** (via [SQLAlchemy 2.0](https://docs.sqlalchemy.org/en/20/orm/extensions/asyncio.html)). Why asynchronous? Well.. Speed! Read [this blog from Packt](https://subscription.packtpub.com/book/programming/9781838821135/6/ch06lvl1sec32/synchronous-asynchronous-and-threaded-execution) if you want to educate yourself further about the topic **Asynchronous, Synchronous, Concurrency,** and **Parallelism**.
-* And **Docker** is the technology that will hold your team together because your app will live in a container where the gravity of your personal machine specs don't matter anymore!
+* The database of my choice is the **asynchronous** version of **PostgreSQL** (via [SQLAlchemy 2.0](https://docs.sqlalchemy.org/en/20/orm/extensions/asyncio.html)). Read [this blog from Packt](https://subscription.packtpub.com/book/programming/9781838821135/6/ch06lvl1sec32/synchronous-asynchronous-and-threaded-execution) if you want to educate yourself further about the topic **Asynchronous, Synchronous, Concurrency,** and **Parallelism**.
+* **Docker** is a technology that packages an application into standardized units called containers that have everything the software needs to run including libraries, system tools, code, and runtime.
 
 ## Other Technologies
 
@@ -39,40 +41,48 @@ The above listed technologies are just the main ones. There are other technologi
 * [SQLAlchemy 2.0](https://docs.sqlalchemy.org/en/20/orm/extensions/asyncio.html) $\rightarrow$ The go-to database interface library for Python. The 2.0 is the most recent update where it provides asynchronous setup.
 * [CODEOWNERS](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners) $\rightarrow$ A file for distributing the responsibilities in our project to each team/team mate.
 
-The choice for my project development worklow is usually the [Trunk-Based Development](https://trunkbaseddevelopment.com/), hence the name `trunk` for the main branch repository instead of `master` or `main`.
+My choice for a project development worklow is usually the [Trunk-Based Development](https://trunkbaseddevelopment.com/) because of the straight forward approach in the collaboration workflow, hence the name `trunk` for the main branch repository instead of `master` or `main`.
 
-## Using this Template
+## Setup Guide
 
-Not a beginner? Great, here is the step to setup this template repository:
+This backend application is setup with `Docker`. Nevertheless, to understand how FastAPI works, read the [backend/README.md](https://github.com/Aeternalis-Ingenium/FastAPI-Backend-Template/trunk/backend/README.md).
 
-1. Backend setup:
-   The backend server runs on http://localhost:8000
+1. Before setting up the backend app, please create a new directory called `coverage` for the testing report purpose:
+   ```shell
+   cd backend && mkdir coverage
+   ```
 
+2. Backend app setup:
     ```shell
-    cd backend
-
-    mdkir coverage
-
+    # Creating VENV
     pyenv virtualenv 3.11.0 any_venv_name
     pyenv local any_venv_name
 
+    # Install dependencies
     pip3 install -r requirements.txt
 
     # Test run your backend server
     uvicorn src.main:backend_app --reload
-
-    # Testing
-    pytest  # Might throw an error without docker becasue of the imports
     ```
 
-3. `Pre-Commit` setup:
+3. Testing with `PyTest`:
+   Make sure that you are in the `backend/` directory.
+   ```shell
+   # For testing without Docker
+   pytest
+   
+   # For testing within Docker
+   docker exec backend_app pytest
+   ```
+
+4. `Pre-Commit` setup:
     ```shell
     # Make sure you are in the ROOT project directory
     pre-commit install
     pre-commit update
     ```
 
-4. `.env` setup:
+5. Backend app credentials setup:
     If you are not used to VIM or Linux CLI, then ignore the `echo` command and do it manually. All the secret variables for this template is located in `.env.example`.
 
     If you want to have another names for the secret variables, don't forget to change them also in:
@@ -87,10 +97,10 @@ Not a beginner? Great, here is the step to setup this template repository:
     echo "SECRET_VARIABLE=SECRET_VARIABLE_VALUE" >> .env
     ```
 
-5. `CODEOWNERS` setup:
+6. `CODEOWNERS` setup:
     Go to `.github/` and open `CODEOWNERS` file. This file is to assign the code to specific team member so you can distribute the weights of the project clearly.
 
-6. Docker setup:
+7. Docker setup:
    ```shell
     # Make sure you are in the ROOT project directory
     chmod +x backend/entrypoint.sh
@@ -102,24 +112,25 @@ Not a beginner? Great, here is the step to setup this template repository:
     docker-compose up -d --build
    ```
 
-7. (IMPORTANT) Finishing setup:
+8. (IMPORTANT) Database setup:
    ```shell
-    # Generate revision for the database auto-migrations
+    # (Docker) Generate revision for the database auto-migrations
     docker exec backend_app alembic revision --autogenerate -m "YOUR MIGRATION TITLE"
     docker exec backend_app alembic upgrade head    # to register the database classes
-
-    # For testing within Docker container
-    docker exec backend_app pytest      # backend
+    
+    # (Local) Generate revision for the database auto-migrations
+    alembic revision --autogenerate -m "YOUR MIGRATION TITLE"
+    alembic upgrade head    # to register the database classes
    ```
 
-8. Go to https://about.codecov.io/, and sign up with your github to get the `CODECOV_TOKEN`
+9. Go to https://about.codecov.io/, and sign up with your github to get the `CODECOV_TOKEN`
 
-9. Go to your GitHub and register all the secret variables (look in .env.example) in your repository (`settings` $\rightarrow$ (scroll down a bit) `Secrets` $\rightarrow$ `Actions` $\rightarrow$ `New repository secret`)
+10. Go to your GitHub and register all the secret variables (look in .env.example) in your repository (`settings` $\rightarrow$ (scroll down a bit) `Secrets` $\rightarrow$ `Actions` $\rightarrow$ `New repository secret`)
 
 **IMPORTANT**: Without the secrets registered in Codecov and GitHub, your `CI` will fail and life will be horrible 🤮🤬
 **IMPORTANT**: Remember to always run the container update every once in a while. Without the arguments `-d --build`, your `Docker` dashboard will be full of junk containers!
 
-## What's Next?
+## Local Setup
 
 Read morea bout how the `backend/` application is set up [here](https://github.com/Aeternalis-Ingenium/FastAPI-Backend-Template/trunk/backend)
 
