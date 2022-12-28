@@ -45,7 +45,7 @@ My choice for a project development worklow is usually the [Trunk-Based Developm
 
 ## Setup Guide
 
-This backend application is setup with `Docker`. Nevertheless, to understand how FastAPI works, read the [backend/README.md](https://github.com/Aeternalis-Ingenium/FastAPI-Backend-Template/trunk/backend/README.md).
+This backend application is setup with `Docker`. Nevertheless, to understand how FastAPI works, read the [backend/README.md](https://github.com/Aeternalis-Ingenium/FastAPI-Backend-Template/blob/trunk/backend/README.md).
 
 1. Before setting up the backend app, please create a new directory called `coverage` for the testing report purpose:
    ```shell
