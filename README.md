@@ -1,5 +1,32 @@
 <h1 align=center><strong>FastAPI Backend Application Template</strong></h1>
 
+<div align=center>
+ <a href="https://github.com/Aeternalis-Ingenium/FastAPI-Backend-Template/actions/workflows/ci-backend.yaml">
+  <img src="https://github.com/Aeternalis-Ingenium/FastAPI-Backend-Template/actions/workflows/ci-backend.yaml/badge.svg"/> 
+ </a>
+
+ <a href="https://codecov.io/gh/Aeternalis-Ingenium/FastAPI-Backend-Template">
+  <img src="https://codecov.io/gh/Aeternalis-Ingenium/FastAPI-Backend-Template/branch/trunk/graph/badge.svg?token=1hiVayuLRl"/> 
+ </a>
+
+ <a href="https://github.com/pre-commit/pre-commit">
+  <img src="https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit" alt="pre-commit" style="max-width:100%;">
+ </a>
+
+ <a href="https://github.com/psf/black">
+  <img src="https://img.shields.io/badge/code%20style-black-000000.svg">
+ </a>
+
+ <a href="https://pycqa.github.io/isort/">
+  <img src="https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336">
+ </a>
+
+ <a href="http://www.mypy-lang.org/static/mypy_badge.svg">
+  <img src="https://camo.githubusercontent.com/59eab954a267c6e9ff1d80e8055de43a0ad771f5e1f3779aef99d111f20bee40/687474703a2f2f7777772e6d7970792d6c616e672e6f72672f7374617469632f6d7970795f62616467652e737667" alt="check with mypy" style="max-width:100%;">
+ </a>
+</div>
+
+<br>
 
 This is a template repository aimed to kick start your project with a setup from a real-world application! This template utilizes the following tech-stack:
 
@@ -63,7 +90,7 @@ For the backend application:
 * API endpoints for `Account` signup and signin in `backend/src/api/routes/authentication.py`.
 * API endpoints for `Account` get all, get 1, update, and delete in `backend/src/api/routes/account.py`.
 * API endpoints registration file in `backend/src/api/endpoints`.
-* Password hashing, JWT for authorization, and simple verification functions in `backend/src/securities/**`.
+* Hashing and JWT generators and simple verification functions in `backend/src/securities/**`.
 * Helper functions, string messages, and error handling in `backend/src/utilities/**`.
 * A comprehensive FastAPI application initialization in `backend/src/main.py`.
 
@@ -76,7 +103,9 @@ For the DevOps:
 * A simple linting job called `code-style` with black, isort, flake8, and mypy in `.github/workflows/ci-backend.yaml`.
 * An automated testing with `PyTest` and an automated test reporting with `Codecov` in in `.github/workflows/ci-backend.yaml`.
 * A source code responsibility distribution file in `.github/CODEOWNERS` (Please change the username into your own).
-* A `YAML` file for an automated semantic commit message.
+* A `YAML` file for an automated semantic commit message in `.github/workflows/ci-backend.yaml`.
+* An automated test report monitoring via `Codecov` in `codecov.yaml`
+* A CI for automatically updating all linter version in the pre-commit `YAML` file in `.pre-commit-config.YAML`.
 
 For containerization:
 * A `Docker` configuration that utilizes the latest Python image in `backend/Dockerfile`.
@@ -84,8 +113,8 @@ For containerization:
 * Setting up `Postgres` image for our database server, `Adminer` for our database editor, and `backend_app` for our backend application's container in `docker-compose.yaml`.
 
 For the team development environment:
-* A pre-commit hooks for `Black`, `Isort`, and `MyPy` to ensure the conventional commit message before pushing an updated code into the remote repository.
-* All secret variables are listed in `.env.example`.
+* A pre-commit hooks for `Black`, `Isort`, and `MyPy` to ensure the conventional commit message before pushing an updated code into the remote repository in `.pre-commit-config.YAML`.
+* All secret variables are listed in `.env.example`. You need to copy these variables and set the values respectively to yoour need and save them in a new `.env` in the the root directory.
 
 ## Setup Guide
 
