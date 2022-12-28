@@ -31,8 +31,6 @@ The above listed technologies are just the main ones. There are other technologi
   * [Black (Python)](https://black.readthedocs.io/en/stable/) $\rightarrow$ Manage your code style with auto formatting and parallel continuous integration runner for Python.
   * [Isort (Python)](https://pycqa.github.io/isort/) $\rightarrow$ Sort your `import` for clarity. Also for Python. 
   * [MyPy (Python)](https://mypy.readthedocs.io/en/stable/) $\rightarrow$ A static type checker for Python that helps you write a cleaner code.
-  * [ESLint (JavaScript)](https://eslint.org/) $\rightarrow$ Analyze your code for JavaScript.
-  * [Prettier](https://prettier.io/) $\rightarrow$ Format your JavaScript code to be more **prettier** 😜.
 * [Pre-Commit CI](https://pre-commit.ci/) $\rightarrow$ Continuous integration for our Pre-Commit hook that fixes and updates our hook versions.
 * [CodeCov](https://about.codecov.io/) $\rightarrow$ A platform that analyze the result of your automated tests.
 * [PyTest](https://docs.pytest.org/en/7.2.x/) $\rightarrow$ The testing framework for Python code.
