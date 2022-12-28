@@ -15,7 +15,7 @@ This backend application template consists of:
 * Create dependency injections for utilizing our asynchronous session and C. R. U. D. repository class.
 * Create account specific routes: `signup`, `signin`, `get all`, `get by id`, `update by id`, and `delete by id`.
 
-Before we start, create a directory named `coverage` in both `backend/` and `frontend/` for our testing reports. You don#t see them now because it is listed in `.gitignore`.
+**P. S. This README will walk you through the local development setup. If you prefer to run your backend app with docker, see the main README.**
 
 ---
 
