@@ -39,7 +39,7 @@ The above listed technologies are just the main ones. There are other technologi
 * [SQLAlchemy 2.0](https://docs.sqlalchemy.org/en/20/orm/extensions/asyncio.html) $\rightarrow$ The go-to database interface library for Python. The 2.0 is the most recent update where it provides asynchronous setup.
 * [CODEOWNERS](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners) $\rightarrow$ A file for distributing the responsibilities in our project to each team/team mate.
 
-The choice for my project development worklow is usually the [Trund-Based Development](https://trunkbaseddevelopment.com/), hence the name `trunk` for the main branch repository instead of `master` or `main`.
+The choice for my project development worklow is usually the [Trunk-Based Development](https://trunkbaseddevelopment.com/), hence the name `trunk` for the main branch repository instead of `master` or `main`.
 
 ## Using this Template
 
@@ -114,7 +114,7 @@ Not a beginner? Great, here is the step to setup this template repository:
 
 8. Go to https://about.codecov.io/, and sign up with your github to get the `CODECOV_TOKEN`
 
-9. Go to your GitHub and register all the secret variables in your repository (`settings` $\rightarrow$ (scroll down a bit) `Secrets` $\rightarrow$ `Actions` $\rightarrow$ `New repository secret`)
+9. Go to your GitHub and register all the secret variables (look in .env.example) in your repository (`settings` $\rightarrow$ (scroll down a bit) `Secrets` $\rightarrow$ `Actions` $\rightarrow$ `New repository secret`)
 
 **IMPORTANT**: Without the secrets registered in Codecov and GitHub, your `CI` will fail and life will be horrible 🤮🤬
 **IMPORTANT**: Remember to always run the container update every once in a while. Without the arguments `-d --build`, your `Docker` dashboard will be full of junk containers!
