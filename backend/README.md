@@ -169,8 +169,8 @@ backend/
             ├── session.py
             ├──repository.py
         ├── routes/                     # Endpoints
-            ├── account.py			    # Account routes
-            ├── authentication.py	    # Signup and Signin routes
+            ├── account.py              # Account routes
+            ├── authentication.py       # Signup and Signin routes
         ├── endpoints.py                # Endpoint registration
     ├── config/
         ├── settings/
@@ -189,7 +189,7 @@ backend/
             ├── base.py                 # Base class for data validation objects
     ├── repository/
         ├── crud/
-            ├── account.py	            # C. R. U. D. operations for Account entity
+            ├── account.py              # C. R. U. D. operations for Account entity
             ├── base.py                 # Base class for C. R. U. D. operations
         ├── migrations/
             ├── versions/
@@ -201,7 +201,7 @@ backend/
         ├── table.py                    # Custom SQLAlchemy Base class
     ├── security/
         ├── hashing/
-            ├── hash.py					# Hash functions with passlib
+            ├── hash.py                 # Hash functions with passlib
             ├── password.py             # Password generator with hash functions
         ├── authorizations/
             ├── jwt.py               	# Generate JWT tokens with python-jose
@@ -211,14 +211,14 @@ backend/
         ├── exceptions/
             ├── http/
                 ├── http_exc_400.py     # Custom 400 error handling functions
-                ├── http_exc_401.py		# Custom 400 error handling functions
+                ├── http_exc_401.py     # Custom 401 error handling functions
                 ├── http_exc_403.py     # Custom 403 error handling functions
                 ├── http_exc_404.py     # Custom 404 error handling functions
             ├── database.py             # Custom `Exception` class
             ├── password.py             # Custom `Exception` class
         ├── formatters/
             ├── datetime_formatter.py   # Reformat datetime into the ISO form
-            ├── field_formatter.py	    # Reformat snake_case to camelCase
+            ├── field_formatter.py      # Reformat snake_case to camelCase
         ├── messages/
             ├── http/
                 ├── http_exc_details.py	# Custom message for HTTP exceptions
