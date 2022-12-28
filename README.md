@@ -43,6 +43,48 @@ The above listed technologies are just the main ones. There are other technologi
 
 My choice for a project development worklow is usually the [Trunk-Based Development](https://trunkbaseddevelopment.com/) because of the straight forward approach in the collaboration workflow, hence the name `trunk` for the main branch repository instead of `master` or `main`.
 
+## What Code is included?
+
+For the backend application:
+* The project, linter, and test configurations in `backend/pyproject.toml`.
+* 3 settings classes (development, staging, production) with the super class in `backend/src/config/settings/base.py`.
+* Event logger in `backend/src/config/events.py`.
+* The `Account` object table model in `backend/src/models/tables/account.py`.
+* The `Account` object schema model in `backend/src/models/schemas/account.py`.
+* PostgreSQL database via asynchronous SQLAlchemy 2.0 in `backend/src/repository/database`.
+* Database-related events e.g. databse table registration by app startup in `backend/src/repository/events.py`.
+* C. R. U. D. methods for `Account` object in `backend/src/repository/crud/account.py`.
+* Table classes registration file in `backend/src/repository/base.py`.
+* Alembic setup for auto generating asynchronous database migrations in `backend/src/repository/migration/**`.
+* Alembic main configuration file in `backend/alembic.ini`.
+* Dependency injection for database session and repository in `backend/src/api/**`.
+* API endpoints for `Account` signup and signin in `backend/src/api/routes/authentication.py`.
+* API endpoints for `Account` get all, get 1, update, and delete in `backend/src/api/routes/account.py`.
+* API endpoints registration file in `backend/src/api/endpoints`.
+* Password hashing, JWT for authorization, and simple verification functions in `backend/src/securities/**`.
+* Helper functions, string messages, and error handling in `backend/src/utilities/**`.
+* A comprehensive FastAPI application initialization in `backend/src/main.py`.
+
+For testing I have prepared the following simple code to kick start your test-driven development:
+* A simple replication of the backend application for testing purposes and the asynchronous test client in `backend/tests/conftest.py`.
+* 2 simple test functions to test the backend application initialization in `tests/unit_tests/test_src.py`.
+
+For the DevOps:
+* A simple `build` job to test the compilation of the source code for the backend application in `.github/workflows/ci-backend.yaml`.
+* A simple linting job called `code-style` with black, isort, flake8, and mypy in `.github/workflows/ci-backend.yaml`.
+* An automated testing with `PyTest` and an automated test reporting with `Codecov` in in `.github/workflows/ci-backend.yaml`.
+* A source code responsibility distribution file in `.github/CODEOWNERS` (Please change the username into your own).
+* A `YAML` file for an automated semantic commit message.
+
+For containerization:
+* A `Docker` configuration that utilizes the latest Python image in `backend/Dockerfile`.
+* A script that ensure the backend application will restart when postgres image hasn't started yet in `backend/entrypoint.sh`.
+* Setting up `Postgres` image for our database server, `Adminer` for our database editor, and `backend_app` for our backend application's container in `docker-compose.yaml`.
+
+For the team development environment:
+* A pre-commit hooks for `Black`, `Isort`, and `MyPy` to ensure the conventional commit message before pushing an updated code into the remote repository.
+* All secret variables are listed in `.env.example`.
+
 ## Setup Guide
 
 This backend application is setup with `Docker`. Nevertheless, you can see the full local setup without `Docker` in [backend/README.md](https://github.com/Aeternalis-Ingenium/FastAPI-Backend-Template/blob/trunk/backend/README.md).
@@ -129,6 +171,99 @@ This backend application is setup with `Docker`. Nevertheless, you can see the f
 
 **IMPORTANT**: Without the secrets registered in Codecov and GitHub, your `CI` will fail and life will be horrible 🤮🤬
 **IMPORTANT**: Remember to always run the container update every once in a while. Without the arguments `-d --build`, your `Docker` dashboard will be full of junk containers!
+
+## Project Structure
+
+```shell
+.github/
+├── workflows/
+    ├── ci-backend.yaml                 # A CI file for the backend app that consits of `build`, `code-style`, and `test`
+├── CODEOWNERS                          # A configuration file to distribute code responsibility
+├── semantic.yaml                       # A configuration file for ensuring an automated semantic commit message
+
+backend/
+├── coverage/
+├── src/
+    ├── api/
+        ├── dependencies/               # Dependency injections
+            ├── session.py
+            ├──repository.py
+        ├── routes/                     # Endpoints
+            ├── account.py              # Account routes
+            ├── authentication.py       # Signup and Signin routes
+        ├── endpoints.py                # Endpoint registration
+    ├── config/
+        ├── settings/
+            ├── base.py                 # Base settings / settings parent class
+                ├── development.py      # Development settings
+                ├── environments.py     # Enum with PROD, DEV, STAGE environment
+                ├── production.py       # Production settings
+                ├── staging.py          # Test settings
+        ├── events.py                   # Registration of global events
+        ├── manager.py                  # Manage get settings
+    ├── models/
+        ├── domains/
+            ├── account.py              # Account class for database entity
+        ├── schemas/
+            ├── account.py              # Account classes for data validation objects
+            ├── base.py                 # Base class for data validation objects
+    ├── repository/
+        ├── crud/
+            ├── account.py              # C. R. U. D. operations for Account entity
+            ├── base.py                 # Base class for C. R. U. D. operations
+        ├── migrations/
+            ├── versions/
+            ├── env.py                  # Generated via alembic for automigration
+            ├── script.py.mako          # Generated via alembic
+        ├── base.py                     # Entry point for alembic automigration
+        ├── database.py                 # Database class with engine and session
+        ├── events.py                   # Registration of database events
+        ├── table.py                    # Custom SQLAlchemy Base class
+    ├── security/
+        ├── hashing/
+            ├── hash.py                 # Hash functions with passlib
+            ├── password.py             # Password generator with hash functions
+        ├── authorizations/
+            ├── jwt.py                  # Generate JWT tokens with python-jose
+        ├── verifications/
+            ├── credentials.py          # Check for attributes' availability
+    ├── utilities/
+        ├── exceptions/
+            ├── http/
+                ├── http_exc_400.py     # Custom 400 error handling functions
+                ├── http_exc_401.py     # Custom 401 error handling functions
+                ├── http_exc_403.py     # Custom 403 error handling functions
+                ├── http_exc_404.py     # Custom 404 error handling functions
+            ├── database.py             # Custom `Exception` class
+            ├── password.py             # Custom `Exception` class
+        ├── formatters/
+            ├── datetime_formatter.py   # Reformat datetime into the ISO form
+            ├── field_formatter.py      # Reformat snake_case to camelCase
+        ├── messages/
+            ├── http/
+                ├── http_exc_details.py	# Custom message for HTTP exceptions
+    ├── main.py                         # Our main backend server app
+├── tests/
+    ├── end_to_end_tests/               # End-to-end tests
+    ├── integration_tests/              # Integration tests
+    ├── security_tests/                 # Security-related tests
+    ├── unit_tests/                     # Unit tests
+        ├── test_src.py                 # Testing the src directory's version
+    ├── conftest.py                     # The fixture codes and other base test codes
+├── Dockerfile                          # Docker cpnfiguration file for backend application
+├── README.md                           # Documentaiton for backend app
+├── entrypoint.sh                       # A script to restart backend app container if postgres is not started
+├── alembic.ini                         # Automatic databse migration configuration
+├── pyproject.toml                      # Linter and test main configuration file
+├── requirements.txt                    # Packages installed for backend app
+.dockerignore                           # A file that list files to be excluded in Docker container
+.gitignore                              # A file that list files to be excluded in GitHub repository
+.pre-commit-config.yaml                 # A file with Python linter hooks to ensure conventional commit when committing
+LICENSE.md                              # A license to use this template repository (delete this file after using this repository)
+README.md                               # The main documnetation file for this template repository
+codecov.yaml                            # The configuration file for automated testing CI with codecov.io
+docker-compose.yaml                     # The main configuration file for setting up a multi-container Docker
+```
 
 ## Final Step
 
