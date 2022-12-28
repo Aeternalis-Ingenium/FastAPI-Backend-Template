@@ -135,6 +135,7 @@ Check the `pyproject.toml` as the main configuration file for the following pack
 **INFO**: The testing report is automatically generated and saved in ``
 
 * Step 1: Run PyTest:
+
     ```shell
     pytest
     ```
@@ -154,86 +155,6 @@ Server | Database | Test | Linter | Others
 [asgi_lifespan](https://pypi.org/project/asgi-lifespan/) | - |  | [colorama](https://pypi.org/project/colorama/) | [loguru](https://github.com/Delgan/loguru)
 [httpx](https://www.python-httpx.org/) | - | - | - | [python-jose](https://python-jose.readthedocs.io/en/latest/)
 [trio](https://pypi.org/project/trio/) | - | - | - | [pathlib](https://pathlib.readthedocs.io/en/pep428/)
-- | - | - | - | [python-slugify](https://pypi.org/project/python-slugify/)
-
----
-
-## Project Structure
-
-```shell
-backend/
-├── coverage/
-├── src/
-    ├── api/
-        ├── dependencies/               # Dependency injections
-            ├── session.py
-            ├──repository.py
-        ├── routes/                     # Endpoints
-            ├── account.py              # Account routes
-            ├── authentication.py       # Signup and Signin routes
-        ├── endpoints.py                # Endpoint registration
-    ├── config/
-        ├── settings/
-            ├── base.py                 # Base settings / settings parent class
-                ├── development.py      # Development settings
-                ├── environments.py     # Enum with PROD, DEV, STAGE environment
-                ├── production.py       # Production settings
-                ├── staging.py          # Test settings
-        ├── events.py                   # Registration of global events
-        ├── manager.py                  # Manage get settings
-    ├── models/
-        ├── domains/
-            ├── account.py              # Account class for database entity
-        ├── schemas/
-            ├── account.py              # Account classes for data validation objects
-            ├── base.py                 # Base class for data validation objects
-    ├── repository/
-        ├── crud/
-            ├── account.py              # C. R. U. D. operations for Account entity
-            ├── base.py                 # Base class for C. R. U. D. operations
-        ├── migrations/
-            ├── versions/
-            ├── env.py                	# Generated via alembic for automigration
-            ├── script.py.mako        	# Generated via alembic
-        ├── base.py                     # Entry point for alembic automigration
-        ├── database.py                 # Database class with engine and session
-        ├── events.py                   # Registration of database events
-        ├── table.py                    # Custom SQLAlchemy Base class
-    ├── security/
-        ├── hashing/
-            ├── hash.py                 # Hash functions with passlib
-            ├── password.py             # Password generator with hash functions
-        ├── authorizations/
-            ├── jwt.py               	# Generate JWT tokens with python-jose
-        ├── verifications/
-            ├── credentials.py          # Check for attributes' availability
-    ├── utilities/
-        ├── exceptions/
-            ├── http/
-                ├── http_exc_400.py     # Custom 400 error handling functions
-                ├── http_exc_401.py     # Custom 401 error handling functions
-                ├── http_exc_403.py     # Custom 403 error handling functions
-                ├── http_exc_404.py     # Custom 404 error handling functions
-            ├── database.py             # Custom `Exception` class
-            ├── password.py             # Custom `Exception` class
-        ├── formatters/
-            ├── datetime_formatter.py   # Reformat datetime into the ISO form
-            ├── field_formatter.py      # Reformat snake_case to camelCase
-        ├── messages/
-            ├── http/
-                ├── http_exc_details.py	# Custom message for HTTP exceptions
-    ├── main.py                         # Our main backend server app
-tests/
-├── end_to_end_tests/                   # End-to-end tests
-├── integration_tests/                  # Integration tests
-├── security_tests/                     # Security-related tests
-├── unit_tests/                         # Unit tests
-    ├── test_src.py                     # Testing the src directory's version
-conftest.py                             # The fixture codes and other base test codes
-alembic.ini                             # Automatic databse migration configuration
-pyproject.toml                          # Linter and test main configuration file
-README.md                               # Documentaiton for backend app
-requirements.txt                        # Packages installed for backend app
-```
+ \- | - | - | - | [python-slugify](https://pypi.org/project/python-slugify/)
 
 ---
