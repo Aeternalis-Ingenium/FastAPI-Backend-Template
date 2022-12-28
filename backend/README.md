@@ -49,6 +49,15 @@ This backend application template consists of:
 
 ---
 
+## SSHhhhttt 🤫 It's a Secret!
+
+All secret variables are configured in the `.env`, but in this case since it is listed in our `.gitignore` you should create one and save it in the root directory.
+
+The secret variables are accessed by 2 different files:
+
+1. `backend7src/config/settings/base.py` $\rightarrow$ The `BackendBaseSettings` class contains all the secret variables. This allows us to set the values dynamically through out the backend application ("dynamic" because we only need to change the value in `.env` file without breaking any code).
+2. `docker-compose.yaml` $\rightarrow$ When we initialize the `backend_app` container, we register all the secret variables as well for our containerized backend application.
+
 ## Database
 
 **INFO**: No postgres server, no connection!
@@ -132,7 +141,7 @@ Check the `pyproject.toml` as the main configuration file for the following pack
 
 **INFO**: For running the test, make sure you are in the root directory and NOT in the `backend/` directory!
 
-**INFO**: The testing report is automatically generated and saved in ``
+**INFO**: The testing report is automatically generated and saved in `backend/coverage/**`
 
 * Step 1: Run PyTest:
 
