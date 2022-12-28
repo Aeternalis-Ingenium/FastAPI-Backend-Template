@@ -45,7 +45,7 @@ My choice for a project development worklow is usually the [Trunk-Based Developm
 
 ## Setup Guide
 
-This backend application is setup with `Docker`. Nevertheless, to understand how FastAPI works, read the [backend/README.md](https://github.com/Aeternalis-Ingenium/FastAPI-Backend-Template/blob/trunk/backend/README.md).
+This backend application is setup with `Docker`. Nevertheless, you can see the full local setup without `Docker` in [backend/README.md](https://github.com/Aeternalis-Ingenium/FastAPI-Backend-Template/blob/trunk/backend/README.md).
 
 1. Before setting up the backend app, please create a new directory called `coverage` for the testing report purpose:
    ```shell
@@ -129,10 +129,6 @@ This backend application is setup with `Docker`. Nevertheless, to understand how
 
 **IMPORTANT**: Without the secrets registered in Codecov and GitHub, your `CI` will fail and life will be horrible 🤮🤬
 **IMPORTANT**: Remember to always run the container update every once in a while. Without the arguments `-d --build`, your `Docker` dashboard will be full of junk containers!
-
-## Local Setup
-
-Read morea bout how the `backend/` application is set up [here](https://github.com/Aeternalis-Ingenium/FastAPI-Backend-Template/trunk/backend)
 
 ## Final Step
 
