@@ -3,7 +3,7 @@ import typing
 import sqlalchemy
 from sqlalchemy.sql import functions as sqlalchemy_functions
 
-from src.models.domains.account import Account
+from src.models.db.account import Account
 from src.models.schemas.account import AccountInCreate, AccountInLogin, AccountInUpdate
 from src.repository.crud.base import BaseCRUDRepository
 from src.securities.hashing.password import pwd_generator

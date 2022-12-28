@@ -4,7 +4,7 @@ import pydantic
 from jose import jwt as jose_jwt, JWTError as JoseJWTError
 
 from src.config.manager import settings
-from src.models.domains.account import Account
+from src.models.db.account import Account
 from src.models.schemas.jwt import JWTAccount, JWToken
 from src.utilities.exceptions.database import EntityDoesNotExist
 
