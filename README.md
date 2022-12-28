@@ -49,9 +49,11 @@ For the backend application:
 * The project, linter, and test configurations in `backend/pyproject.toml`.
 * 3 settings classes (development, staging, production) with the super class in `backend/src/config/settings/base.py`.
 * Event logger in `backend/src/config/events.py`.
-* The `Account` object table model in `backend/src/models/tables/account.py`.
+* The `Account` object table model in `backend/src/models/db/account.py`.
 * The `Account` object schema model in `backend/src/models/schemas/account.py`.
-* PostgreSQL database via asynchronous SQLAlchemy 2.0 in `backend/src/repository/database`.
+* PostgreSQL database connection with asynchronous SQLAlchemy 2.0 in `backend/src/repository/database.py`.
+* A custom SQLAlchemy Base class in `backend/src/repository/table.py`
+* PostgreSQL database connection with asynchronous SQLAlchemy 2.0 in `backend/src/repository/database.py`.
 * Database-related events e.g. databse table registration by app startup in `backend/src/repository/events.py`.
 * C. R. U. D. methods for `Account` object in `backend/src/repository/crud/account.py`.
 * Table classes registration file in `backend/src/repository/base.py`.
@@ -202,7 +204,7 @@ backend/
         ├── events.py                   # Registration of global events
         ├── manager.py                  # Manage get settings
     ├── models/
-        ├── domains/
+        ├── db/
             ├── account.py              # Account class for database entity
         ├── schemas/
             ├── account.py              # Account classes for data validation objects
