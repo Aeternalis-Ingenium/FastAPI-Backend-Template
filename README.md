@@ -63,7 +63,7 @@ The above listed technologies are just the main ones. There are other technologi
 * [Pre-Commit CI](https://pre-commit.ci/) $\rightarrow$ Continuous integration for our Pre-Commit hook that fixes and updates our hook versions.
 * [CodeCov](https://about.codecov.io/) $\rightarrow$ A platform that analyze the result of your automated tests.
 * [PyTest](https://docs.pytest.org/en/7.2.x/) $\rightarrow$ The testing framework for Python code.
-* [DBDiagram](https://dbdiagram.io/home) $\rightarrow$ A platform that lets your design your database by writing SQL and converting it into ERD. This paltform provides a complete symbol for entity relationships (not like many other platforms!).
+* [DBDiagram](https://dbdiagram.io/home) $\rightarrow$ A platform that lets your design your database by writing SQL and converting it into ERD. This platform provides a complete symbol for entity relationships (not like many other platforms!).
 * [GitHub Actions](https://github.com/features/actions) $\rightarrow$ The platform to setup our CI/CD by GitHub.
 * [SQLAlchemy 2.0](https://docs.sqlalchemy.org/en/20/orm/extensions/asyncio.html) $\rightarrow$ The go-to database interface library for Python. The 2.0 is the most recent update where it provides asynchronous setup.
 * [CODEOWNERS](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners) $\rightarrow$ A file for distributing the responsibilities in our project to each team/team mate.
@@ -81,7 +81,7 @@ For the backend application:
 * PostgreSQL database connection with asynchronous SQLAlchemy 2.0 in `backend/src/repository/database.py`.
 * A custom SQLAlchemy Base class in `backend/src/repository/table.py`
 * PostgreSQL database connection with asynchronous SQLAlchemy 2.0 in `backend/src/repository/database.py`.
-* Database-related events e.g. databse table registration by app startup in `backend/src/repository/events.py`.
+* Database-related events e.g. database table registration by app startup in `backend/src/repository/events.py`.
 * C. R. U. D. methods for `Account` object in `backend/src/repository/crud/account.py`.
 * Table classes registration file in `backend/src/repository/base.py`.
 * Alembic setup for auto generating asynchronous database migrations in `backend/src/repository/migration/**`.
@@ -181,7 +181,7 @@ This backend application is setup with `Docker`. Nevertheless, you can see the f
     docker-compose build
     docker-compose up
 
-    # Everytime you write a new code, update your container with:
+    # Every time you write a new code, update your container with:
     docker-compose up -d --build
    ```
 
@@ -208,7 +208,7 @@ This backend application is setup with `Docker`. Nevertheless, you can see the f
 ```shell
 .github/
 ├── workflows/
-    ├── ci-backend.yaml                 # A CI file for the backend app that consits of `build`, `code-style`, and `test`
+    ├── ci-backend.yaml                 # A CI file for the backend app that consists of `build`, `code-style`, and `test`
 ├── CODEOWNERS                          # A configuration file to distribute code responsibility
 ├── semantic.yaml                       # A configuration file for ensuring an automated semantic commit message
 
@@ -282,16 +282,16 @@ backend/
         ├── test_src.py                 # Testing the src directory's version
     ├── conftest.py                     # The fixture codes and other base test codes
 ├── Dockerfile                          # Docker cpnfiguration file for backend application
-├── README.md                           # Documentaiton for backend app
+├── README.md                           # Documentation for backend app
 ├── entrypoint.sh                       # A script to restart backend app container if postgres is not started
-├── alembic.ini                         # Automatic databse migration configuration
+├── alembic.ini                         # Automatic database migration configuration
 ├── pyproject.toml                      # Linter and test main configuration file
 ├── requirements.txt                    # Packages installed for backend app
 .dockerignore                           # A file that list files to be excluded in Docker container
 .gitignore                              # A file that list files to be excluded in GitHub repository
 .pre-commit-config.yaml                 # A file with Python linter hooks to ensure conventional commit when committing
 LICENSE.md                              # A license to use this template repository (delete this file after using this repository)
-README.md                               # The main documnetation file for this template repository
+README.md                               # The main documentation file for this template repository
 codecov.yaml                            # The configuration file for automated testing CI with codecov.io
 docker-compose.yaml                     # The main configuration file for setting up a multi-container Docker
 ```
