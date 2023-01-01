@@ -1,4 +1,4 @@
-"""initial migration fo account table
+"""initial migration for account table
 
 Revision ID: 60d1844cb5d3
 Revises:

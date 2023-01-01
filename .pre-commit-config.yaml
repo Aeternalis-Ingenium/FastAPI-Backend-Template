@@ -33,6 +33,12 @@ repos:
         name: isort (python)
         args:
         - --settings-path=backend/pyproject.toml
+-   repo: https://github.com/codespell-project/codespell
+    rev: v2.2.2
+    hooks:
+    -   id: codespell
+        additional_dependencies:
+        - tomli
 -   repo: https://github.com/pre-commit/mirrors-mypy
     rev: "v0.991"
     hooks:

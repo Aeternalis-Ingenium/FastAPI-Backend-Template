@@ -6,7 +6,7 @@ This backend application template consists of:
 * Create the backend server with FastAPI and Uvicorn,
 * Connect the backend app with PostgreSQL server via the asynchronous SQLAlchemy with AsyncPG driver.
 * Set up Alembic for the auto-generation of database migrations.
-* Create `Account` (domain) class as our database entitiy `account`.
+* Create `Account` (domain) class as our database entity `account`.
 * Create data validation for our database entity with [Pydantic](https://pydantic-docs.helpmanual.io/).
 * Create formatters for `json` convention and `datetime`.
 * Create authorization with JWT Token generator.
@@ -97,7 +97,7 @@ The secret variables are accessed by 2 different files:
 
 ## Pre-Commit
 
-**INFO**: Run **Step 1** everytime you `git add` a file to identify any mistakes before `git commit`. Otherwise, you will re-write your perfect commit message again 👿🤬🤮
+**INFO**: Run **Step 1** every time you `git add` a file to identify any mistakes before `git commit`. Otherwise, you will re-write your perfect commit message again 👿🤬🤮
 
 * Step 1 $\rightarrow$ Install the pre-commit hook:
     ```shell
