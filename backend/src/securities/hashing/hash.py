@@ -26,7 +26,7 @@ class HashGenerator:
 
     def generate_password_hash(self, hash_salt: str, password: str) -> str:
         """
-        A function taht adds the user's password with the layer 1 Bcrypt hash, before
+        A function that adds the user's password with the layer 1 Bcrypt hash, before
         hash it for the second time using Argon2 algorithm.
         """
         return self._hash_ctx_layer_2.hash(secret=hash_salt + password)

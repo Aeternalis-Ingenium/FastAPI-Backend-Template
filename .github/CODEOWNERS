@@ -6,7 +6,7 @@
 *.ts @Aeternalis-Ingenium
 *.cjs @Aeternalis-Ingenium
 
-# HTML & CSS realted code
+# HTML & CSS related code
 *.html @Aeternalis-Ingenium
 *.css @Aeternalis-Ingenium
 *.scss @Aeternalis-Ingenium
