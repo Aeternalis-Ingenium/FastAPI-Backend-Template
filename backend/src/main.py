@@ -11,16 +11,15 @@
 #     return {"item_id": item_id, "q": q}
 
 
-import fastapi	from fastapi import FastAPI
+import fastapi
+import FastAPI
+import import
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 
-
-from src.api.endpoints import router as api_endpoint_router	backend_app = FastAPI()
+from src.api.endpoints import =, backend_app, FastAPI, router as api_endpoint_router
 from src.config.events import execute_backend_server_event_handler, terminate_backend_server_event_handler
 from src.config.manager import settings
-
-
 
 
 def initialize_backend_application() -> fastapi.FastAPI:	@backend_app.get("/")
