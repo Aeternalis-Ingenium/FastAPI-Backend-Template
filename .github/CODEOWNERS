@@ -12,7 +12,7 @@
 *.scss @Aeternalis-Ingenium
 
 # JSON related code
-*.json
+*.json @Aeternalis-Ingenium
 
 # DevOps related code
 *.yml @Aeternalis-Ingenium
