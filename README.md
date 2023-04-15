@@ -152,7 +152,7 @@ This backend application is setup with `Docker`. Nevertheless, you can see the f
     ```shell
     # Make sure you are in the ROOT project directory
     pre-commit install
-    pre-commit update
+    pre-commit autoupdate
     ```
 
 5. Backend app credentials setup:
