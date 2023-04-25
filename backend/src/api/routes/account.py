@@ -57,7 +57,6 @@ async def get_account(
     id: int,
     account_repo: AccountCRUDRepository = fastapi.Depends(get_repository(repo_type=AccountCRUDRepository)),
 ) -> AccountInResponse:
-
     try:
         db_account = await account_repo.read_account_by_id(id=id)
         access_token = jwt_generator.generate_access_token(account=db_account)
@@ -93,7 +92,6 @@ async def update_account(
     update_password: str | None = None,
     account_repo: AccountCRUDRepository = fastapi.Depends(get_repository(repo_type=AccountCRUDRepository)),
 ) -> AccountInResponse:
-
     account_update = AccountInUpdate(username=update_username, email=update_email, password=update_password)
     try:
         updated_db_account = await account_repo.update_account_by_id(id=query_id, account_update=account_update)

@@ -105,7 +105,6 @@ class AccountCRUDRepository(BaseCRUDRepository):
         return update_account  # type: ignore
 
     async def delete_account_by_id(self, id: int) -> str:
-
         select_stmt = sqlalchemy.select(Account).where(Account.id == id)
         query = await self.async_session.execute(statement=select_stmt)
         delete_account = query.scalar()
