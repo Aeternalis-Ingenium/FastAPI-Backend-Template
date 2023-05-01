@@ -23,7 +23,6 @@ async def signup(
     account_create: AccountInCreate,
     account_repo: AccountCRUDRepository = fastapi.Depends(get_repository(repo_type=AccountCRUDRepository)),
 ) -> AccountInResponse:
-
     try:
         await account_repo.is_username_taken(username=account_create.username)
         await account_repo.is_email_taken(email=account_create.email)
@@ -59,7 +58,6 @@ async def signin(
     account_login: AccountInLogin,
     account_repo: AccountCRUDRepository = fastapi.Depends(get_repository(repo_type=AccountCRUDRepository)),
 ) -> AccountInResponse:
-
     try:
         db_account = await account_repo.read_user_by_password_authentication(account_login=account_login)
 
