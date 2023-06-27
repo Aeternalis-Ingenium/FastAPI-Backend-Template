@@ -34,13 +34,13 @@ repos:
         args:
         - --settings-path=backend/pyproject.toml
 -   repo: https://github.com/codespell-project/codespell
-    rev: v2.2.4
+    rev: v2.2.5
     hooks:
     -   id: codespell
         additional_dependencies:
         - tomli
 -   repo: https://github.com/pre-commit/mirrors-mypy
-    rev: "v1.3.0"
+    rev: "v1.4.1"
     hooks:
     -   id: mypy
         args:
@@ -52,7 +52,7 @@ repos:
       files: \.[jt]sx?$
       types_or: [css, javascript]
 -   repo: https://github.com/pre-commit/mirrors-eslint
-    rev: "v8.41.0"
+    rev: "v8.43.0"
     hooks:
     -   id: eslint
         files: \.[jt]sx?$  # *.js, *.jsx, *.ts and *.tsx
