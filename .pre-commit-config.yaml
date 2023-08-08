@@ -46,13 +46,13 @@ repos:
         args:
         - --config-file=backend/pyproject.toml
 - repo: https://github.com/pre-commit/mirrors-prettier
-  rev: "v3.0.0"
+  rev: "v3.0.1"
   hooks:
     - id: prettier
       files: \.[jt]sx?$
       types_or: [css, javascript]
 -   repo: https://github.com/pre-commit/mirrors-eslint
-    rev: "v8.45.0"
+    rev: "v8.46.0"
     hooks:
     -   id: eslint
         files: \.[jt]sx?$  # *.js, *.jsx, *.ts and *.tsx
