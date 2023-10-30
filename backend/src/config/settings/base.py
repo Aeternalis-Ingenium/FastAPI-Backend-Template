@@ -32,7 +32,7 @@ class BackendBaseSettings(pydantic.BaseSettings):
     DB_POSTGRES_PORT: int = decouple.config("POSTGRES_PORT", cast=int)  # type: ignore
     DB_POSTGRES_SCHEMA: str = decouple.config("POSTGRES_SCHEMA", cast=str)  # type: ignore
     DB_TIMEOUT: int = decouple.config("DB_TIMEOUT", cast=int)  # type: ignore
-    DB_POSTGRES_USENRAME: str = decouple.config("POSTGRES_USERNAME", cast=str)  # type: ignore
+    DB_POSTGRES_USERNAME: str = decouple.config("POSTGRES_USERNAME", cast=str)  # type: ignore
 
     IS_DB_ECHO_LOG: bool = decouple.config("IS_DB_ECHO_LOG", cast=bool)  # type: ignore
     IS_DB_FORCE_ROLLBACK: bool = decouple.config("IS_DB_FORCE_ROLLBACK", cast=bool)  # type: ignore
