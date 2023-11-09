@@ -106,7 +106,7 @@ The secret variables are accessed by 2 different files:
 
 * Step 2 $\rightarrow$ For good practive, let#s update the hooks:
     ```shell
-    pre-commit autoupgrade
+    pre-commit autoupdate
     ```
 
 ---
