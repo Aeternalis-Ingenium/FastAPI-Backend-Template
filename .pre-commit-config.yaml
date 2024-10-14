@@ -1,5 +1,5 @@
 default_install_hook_types: [pre-commit]
-default_stages: [commit, push]
+default_stages: [pre-commit, pre-push]
 default_language_version:
   python: python3.11
 ci:
@@ -13,14 +13,14 @@ ci:
     submodules: false
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v5.0.0
     hooks:
     -   id: check-yaml
     -   id: end-of-file-fixer
     -   id: trailing-whitespace
         files: ^backend/
 -   repo: https://github.com/psf/black
-    rev: 24.3.0
+    rev: 24.10.0
     hooks:
     -   id: black
         language_version: python3.11
@@ -34,13 +34,13 @@ repos:
         args:
         - --settings-path=backend/pyproject.toml
 -   repo: https://github.com/codespell-project/codespell
-    rev: v2.2.6
+    rev: v2.3.0
     hooks:
     -   id: codespell
         additional_dependencies:
         - tomli
 -   repo: https://github.com/pre-commit/mirrors-mypy
-    rev: "v1.9.0"
+    rev: "v1.11.2"
     hooks:
     -   id: mypy
         args:
@@ -52,7 +52,7 @@ repos:
       files: \.[jt]sx?$
       types_or: [css, javascript]
 -   repo: https://github.com/pre-commit/mirrors-eslint
-    rev: "v9.0.0-rc.0"
+    rev: "v9.12.0"
     hooks:
     -   id: eslint
         files: \.[jt]sx?$  # *.js, *.jsx, *.ts and *.tsx
