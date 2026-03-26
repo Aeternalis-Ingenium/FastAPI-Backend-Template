@@ -12,5 +12,5 @@ from src.repository.database import async_db
 
 
 async def get_async_session() -> typing.AsyncGenerator[SQLAlchemyAsyncSession, None]:
-    async with async_db.async_session() as session:  
+    async with async_db.async_session() as session:
         yield session
