@@ -1,6 +1,6 @@
 import pydantic
 from sqlalchemy.ext.asyncio import (
-    async_sessionmaker as sqlalchemy_async_sessionmaker,
+    async_sessionmaker as SQLAlchemyAsyncSessionMaker,
     AsyncEngine as SQLAlchemyAsyncEngine,
     AsyncSession as SQLAlchemyAsyncSession,
     create_async_engine as create_sqlalchemy_async_engine,
@@ -23,7 +23,7 @@ class AsyncDatabase:
             max_overflow=settings.DB_POOL_OVERFLOW,
             poolclass=SQLAlchemyQueuePool,
         )
-        self.async_session: SQLAlchemyAsyncSession = SQLAlchemyAsyncSession(bind=self.async_engine)
+        self.async_session: SQLAlchemyAsyncSessionMaker = SQLAlchemyAsyncSessionMaker(bind=self.async_engine , expire_on_commit=False)
         self.pool: SQLAlchemyPool = self.async_engine.pool
 
     @property
