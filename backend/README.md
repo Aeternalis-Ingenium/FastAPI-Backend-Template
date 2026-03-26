@@ -120,7 +120,7 @@ Check the `pyproject.toml` as the main configuration file for the following pack
 * Isort
 * MyPy
 * PyTest
-* Converage
+* Coverage
 
 ---
 
