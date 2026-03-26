@@ -1,4 +1,4 @@
-# Pull official latest Python Docker image (Pulished with version 3.11.0)
+# Pull official latest Python Docker image (Published with version 3.11.0)
 FROM --platform=linux/amd64 python:latest
 
 # Set the working directory
