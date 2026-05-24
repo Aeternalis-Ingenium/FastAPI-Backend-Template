@@ -1,11 +1,14 @@
 import fastapi
 import pydantic
 
+from src.api.dependencies.auth import get_current_user
 from src.api.dependencies.repository import get_repository
+from src.models.db.account import Account
 from src.models.schemas.account import AccountInResponse, AccountInUpdate, AccountWithToken
 from src.repository.crud.account import AccountCRUDRepository
 from src.securities.authorizations.jwt import jwt_generator
 from src.utilities.exceptions.database import EntityDoesNotExist
+from src.utilities.exceptions.http.exc_403 import http_403_exc_forbidden_request
 from src.utilities.exceptions.http.exc_404 import (
     http_404_exc_email_not_found_request,
     http_404_exc_id_not_found_request,
@@ -22,29 +25,24 @@ router = fastapi.APIRouter(prefix="/accounts", tags=["accounts"])
     status_code=fastapi.status.HTTP_200_OK,
 )
 async def get_accounts(
+    current_user: Account = fastapi.Depends(get_current_user),
     account_repo: AccountCRUDRepository = fastapi.Depends(get_repository(repo_type=AccountCRUDRepository)),
 ) -> list[AccountInResponse]:
-    db_accounts = await account_repo.read_accounts()
-    db_account_list: list = list()
-
-    for db_account in db_accounts:
-        access_token = jwt_generator.generate_access_token(account=db_account)
-        account = AccountInResponse(
-            id=db_account.id,
-            authorized_account=AccountWithToken(
-                token=access_token,
-                username=db_account.username,
-                email=db_account.email,  # type: ignore
-                is_verified=db_account.is_verified,
-                is_active=db_account.is_active,
-                is_logged_in=db_account.is_logged_in,
-                created_at=db_account.created_at,
-                updated_at=db_account.updated_at,
-            ),
-        )
-        db_account_list.append(account)
-
-    return db_account_list
+    access_token = jwt_generator.generate_access_token(account=current_user)
+    account = AccountInResponse(
+        id=current_user.id,
+        authorized_account=AccountWithToken(
+            token=access_token,
+            username=current_user.username,
+            email=current_user.email,  # type: ignore
+            is_verified=current_user.is_verified,
+            is_active=current_user.is_active,
+            is_logged_in=current_user.is_logged_in,
+            created_at=current_user.created_at,
+            updated_at=current_user.updated_at,
+        ),
+    )
+    return [account]
 
 
 @router.get(
@@ -55,8 +53,12 @@ async def get_accounts(
 )
 async def get_account(
     id: int,
+    current_user: Account = fastapi.Depends(get_current_user),
     account_repo: AccountCRUDRepository = fastapi.Depends(get_repository(repo_type=AccountCRUDRepository)),
 ) -> AccountInResponse:
+    if id != current_user.id:
+        raise await http_403_exc_forbidden_request()
+
     try:
         db_account = await account_repo.read_account_by_id(id=id)
         access_token = jwt_generator.generate_access_token(account=db_account)
@@ -87,11 +89,15 @@ async def get_account(
 )
 async def update_account(
     query_id: int,
+    current_user: Account = fastapi.Depends(get_current_user),
     update_username: str | None = None,
     update_email: pydantic.EmailStr | None = None,
     update_password: str | None = None,
     account_repo: AccountCRUDRepository = fastapi.Depends(get_repository(repo_type=AccountCRUDRepository)),
 ) -> AccountInResponse:
+    if query_id != current_user.id:
+        raise await http_403_exc_forbidden_request()
+
     account_update = AccountInUpdate(username=update_username, email=update_email, password=update_password)
     try:
         updated_db_account = await account_repo.update_account_by_id(id=query_id, account_update=account_update)
@@ -118,8 +124,13 @@ async def update_account(
 
 @router.delete(path="", name="accountss:delete-account-by-id", status_code=fastapi.status.HTTP_200_OK)
 async def delete_account(
-    id: int, account_repo: AccountCRUDRepository = fastapi.Depends(get_repository(repo_type=AccountCRUDRepository))
+    id: int,
+    current_user: Account = fastapi.Depends(get_current_user),
+    account_repo: AccountCRUDRepository = fastapi.Depends(get_repository(repo_type=AccountCRUDRepository)),
 ) -> dict[str, str]:
+    if id != current_user.id:
+        raise await http_403_exc_forbidden_request()
+
     try:
         deletion_result = await account_repo.delete_account_by_id(id=id)
 
