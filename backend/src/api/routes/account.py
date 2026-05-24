@@ -8,9 +8,7 @@ from src.models.schemas.account import AccountInResponse, AccountInUpdate, Accou
 from src.repository.crud.account import AccountCRUDRepository
 from src.securities.authorizations.jwt import jwt_generator
 from src.utilities.exceptions.database import EntityDoesNotExist
-from src.utilities.exceptions.http.exc_403 import (
-    http_403_exc_forbidden_request,
-)
+from src.utilities.exceptions.http.exc_403 import http_403_exc_forbidden_request
 from src.utilities.exceptions.http.exc_404 import (
     http_404_exc_email_not_found_request,
     http_404_exc_id_not_found_request,
